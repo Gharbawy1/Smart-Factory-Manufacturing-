@@ -1,5 +1,5 @@
 #pragma once
-class Queue
-{
-};
+#include<iostream>
+
+using namespace std;
 
