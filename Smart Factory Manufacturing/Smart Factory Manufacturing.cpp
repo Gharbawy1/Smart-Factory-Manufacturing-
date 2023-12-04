@@ -1,11 +1,13 @@
-// Smart Factory Manufacturing.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
-#include <iostream>
+#include<string>
+#include"Queue.h"
+#include"Queue.cpp"
+#include"Stack.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+
+
+
+int main() {
+	
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
