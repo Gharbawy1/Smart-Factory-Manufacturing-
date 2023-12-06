@@ -19,8 +19,6 @@ void QueueNode::InsertNewProduct() {
 	case 1:
 		data[rear] = new Milk;
 		data[rear]->SetData();
-		cout << endl;
-		
 		rear = (rear + 1) % size;
 		NoElment++;
 		break;
@@ -28,8 +26,6 @@ void QueueNode::InsertNewProduct() {
 		data[rear] = new Chips;
 		NoElment++;
 		data[rear]->SetData();
-		
-
 		rear = (rear + 1) % size;
 		break;
 	}
@@ -60,5 +56,7 @@ bool QueueNode::IsEmpty() {
 
 
 void QueueNode::DisplayProducts() {
-
+	for (int i = 0; i < NoElment; i++) {
+		data[i]->DisplayProductData();
+	}
 }

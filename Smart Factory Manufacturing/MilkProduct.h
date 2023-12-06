@@ -3,19 +3,15 @@
 
 class Milk : public Product {
 public:
-    Milk() : brand("Unknown"), fat_percentage(3.5), price(2.99), expiration_date("2024-01-01") {}
+    Milk() : brand("Unknown"), fat_percentage(3.5), expiration_date("2024-01-01"), state(IN_PROGRESS) {}
 
-    Milk(const std::string& brand, double fat_percentage, double price, const std::string& expiration_date) {
+    Milk(const std::string& brand, double fat_percentage, const std::string& expiration_date) {
         this->brand = brand;
         this->fat_percentage = fat_percentage;
-        this->price = price;
         this->expiration_date = expiration_date;
     }
     string get_name() {
         return brand;
-    }
-    double get_price() {
-        return price;
     }
     void SetData() {
         cout << "Enter brand: ";
@@ -35,18 +31,34 @@ public:
 
         formattedData << "Brand: " << brand << "\n";
         formattedData << "Fat Percentage: " << fat_percentage << "%\n";
-        formattedData << "Price: $" << price << "\n";
         formattedData << "Expiration Date: " << expiration_date << "\n";
 
         std::cout << formattedData.str();
     }
-        
+    void UpdateState(int val) {
+        if (val == 1) {
+            state = FINISHED;
+        }
+        else {
+            // here throw an exeption
+        }
+
+    }
+    STATE GetState() {
+        return this->state;
+    }
+    void AddOperation() {
+        cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
+        //// stop here => new operation and pushed in operations stack
+    }
     
 private:
     std::string brand;
     double fat_percentage;
-    double price;
+    STATE state;
     std::string expiration_date;
+    Stack operationsContainer;
+
 };
 
 

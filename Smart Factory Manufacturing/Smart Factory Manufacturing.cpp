@@ -11,6 +11,7 @@ int main() {
 	node.InsertNewProduct();
 	node.InsertNewProduct();
 
+	node.DisplayProducts();
 	
 	
 

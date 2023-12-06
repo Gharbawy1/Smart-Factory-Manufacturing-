@@ -6,23 +6,20 @@ private:
     string brand;
     string flavor;
     double weight;
-    double price;
+    STATE state;
 
 public:
-    Chips() : brand("Generic"), flavor("Salted"), weight(250), price(1.99) {}
-    Chips(const std::string& brnd, const std::string& flvr, double weigt, double pric) {
+    Chips() : brand("Generic"), flavor("Salted"), weight(250),state(IN_PROGRESS) {}
+    Chips(const std::string& brnd, const std::string& flvr, double weigt) {
         brand = brnd;
         flavor = flvr;
         weight = weigt;
-        price = pric;
+    
     }
     string get_name() {
         return brand;
     }
-    double get_price() {
-        return price;
-    }
-
+    
     void SetData() {
         cout << "Enter brand: ";
         cin >> this->brand;
@@ -32,9 +29,6 @@ public:
 
         std::cout << "Enter weight (g): ";
         cin >> this->weight;
-
-        std::cout << "Enter price: ";
-        cin >> this->price;
     }
     void DisplayProductData() {
         std::ostringstream formattedData;
@@ -44,12 +38,23 @@ public:
         formattedData << "Brand: " << brand << "\n";
         formattedData << "Flavor: " << flavor << "\n";
         formattedData << "Weight: " << weight << " grams\n";
-        formattedData << "Price: $" << price << "\n";
 
         std::cout << formattedData.str();
+   
     }
 
-
+    void UpdateState(int val) {
+        if (val == 1) {
+            state = FINISHED;
+        }
+        else {
+            // here throw an exeption
+        }
+        
+    }
+    STATE GetState() {
+        return this->state;
+    }
 
 
 };
