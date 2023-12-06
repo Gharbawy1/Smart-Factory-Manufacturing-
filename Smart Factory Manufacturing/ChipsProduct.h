@@ -23,8 +23,31 @@ public:
         return price;
     }
 
-    void SetData();
+    void SetData() {
+        cout << "Enter brand: ";
+        cin >> this->brand;
 
+        std::cout << "Enter flavor: ";
+        cin >> this->flavor;
+
+        std::cout << "Enter weight (g): ";
+        cin >> this->weight;
+
+        std::cout << "Enter price: ";
+        cin >> this->price;
+    }
+    void DisplayProductData() {
+        std::ostringstream formattedData;
+
+        formattedData << std::fixed << std::setprecision(2);
+
+        formattedData << "Brand: " << brand << "\n";
+        formattedData << "Flavor: " << flavor << "\n";
+        formattedData << "Weight: " << weight << " grams\n";
+        formattedData << "Price: $" << price << "\n";
+
+        std::cout << formattedData.str();
+    }
 
 
 

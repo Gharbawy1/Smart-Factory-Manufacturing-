@@ -17,8 +17,29 @@ public:
     double get_price() {
         return price;
     }
-    void SetData();
+    void SetData() {
+        cout << "Enter brand: ";
+        cin >> this->brand;
 
+        std::cout << "Enter fat percentage (%): ";
+        cin >> this->fat_percentage;
+
+        std::cout << "Enter expiration date (YYYY-MM-DD): ";
+        cin >> this->expiration_date;
+    }
+    void DisplayProductData() {
+        std::ostringstream formattedData;
+
+        // Set precision for displaying floating-point numbers
+        formattedData << std::fixed << std::setprecision(2);
+
+        formattedData << "Brand: " << brand << "\n";
+        formattedData << "Fat Percentage: " << fat_percentage << "%\n";
+        formattedData << "Price: $" << price << "\n";
+        formattedData << "Expiration Date: " << expiration_date << "\n";
+
+        std::cout << formattedData.str();
+    }
         
     
 private:

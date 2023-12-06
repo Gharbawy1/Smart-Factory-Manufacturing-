@@ -1,9 +1,10 @@
 #pragma once
-#include<iostream>
-#include<string>
 #include"Proudct.h"
 #include"MilkProduct.h"
 #include"ChipsProduct.h"
+#include<iostream>
+#include<string>
+
 using namespace std;
 
 
@@ -12,15 +13,18 @@ private:
 	Product** data;
 	int size;
 	int NoElment;
-	QueueNode* next;
 	int front;
 	int rear;
+
 public:
+	QueueNode* next;
 	QueueNode(int init);
 	void InsertNewProduct();
-	void RemoveAProduct(); // from front -> Shif Or circural
+	int RemoveAProduct(); // from front -> Shif Or circural
 	int GetNumberOfElments();
-
+	bool IsFull();
+	bool IsEmpty();
+	void DisplayProducts();
 };
 
 

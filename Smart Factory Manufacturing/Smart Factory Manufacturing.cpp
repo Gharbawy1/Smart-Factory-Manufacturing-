@@ -4,8 +4,14 @@
 using namespace std;
 
 int main() {
-	QueueNode node(2);
+	
+	QueueNode node(4);
 	node.InsertNewProduct();
+	node.InsertNewProduct();
+	node.InsertNewProduct();
+	node.InsertNewProduct();
+
+	
 	
 
 
