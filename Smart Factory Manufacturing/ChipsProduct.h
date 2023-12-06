@@ -1,6 +1,5 @@
 #pragma once
 #include"Proudct.h"
-
 class Chips : public Product {
 private:
     string brand;
@@ -8,6 +7,9 @@ private:
     double weight;
     STATE state;
 
+
+    Stack operationsContainer;
+    int NoOfOperations;
 public:
     Chips() : brand("Generic"), flavor("Salted"), weight(250),state(IN_PROGRESS) {}
     Chips(const std::string& brnd, const std::string& flvr, double weigt) {
@@ -56,5 +58,12 @@ public:
         return this->state;
     }
 
+
+    // AND HERE UNRESOLVE ERROR (EXTERNAL ERROR) :::(((
+   /* void AddOpertaion() {
+        cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
+        Operation* op; op = new Operation; op->setName("Pacjing");
+        operationsContainer.push(op);
+    }*/
 
 };

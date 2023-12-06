@@ -47,17 +47,22 @@ public:
     STATE GetState() {
         return this->state;
     }
-    void AddOperation() {
+    
+    //  ERROR UNRESOLVED EROEE I STOP HERE ----- 
+    /*void AddOpertaion() {
         cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
-        //// stop here => new operation and pushed in operations stack
-    }
+        Operation* op; op = new Operation; op->setName("Pacjing");
+        operationsContainer.push(op);
+    }*/
     
 private:
     std::string brand;
     double fat_percentage;
     STATE state;
     std::string expiration_date;
+    
     Stack operationsContainer;
+    int NoOfOperations;
 
 };
 

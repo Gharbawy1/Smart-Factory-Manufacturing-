@@ -21,6 +21,9 @@ void QueueNode::InsertNewProduct() {
 		data[rear]->SetData();
 		rear = (rear + 1) % size;
 		NoElment++;
+
+		//data[rear]->AddOpertaion();
+		
 		break;
 	case 2:
 		data[rear] = new Chips;

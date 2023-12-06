@@ -1,5 +1,4 @@
 #include"ChipsProduct.h"
-#include"Proudct.h"
 //void Chips::SetData() {
 //    
 //}
@@ -8,3 +7,9 @@
 //   
 //
 //}
+
+void Chips::AddOpertaion(){
+        cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
+        Operation* op; op = new Operation; op->setName("Pacjing");
+        operationsContainer.push(op);
+    }

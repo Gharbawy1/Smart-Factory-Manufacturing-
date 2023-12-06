@@ -1,6 +1,5 @@
 #ifndef OPERATION_H
 #define OPERATION_H
-
 #include<iostream>
 using namespace std;
 class Operation
@@ -11,16 +10,17 @@ private:
 
 public:
     Operation();
-    Operation(string name);
-    void setName(string name);
-    string getName();
+
+    Operation(std::string name);
+    void setName(std::string name);
+    std::string getName();
     friend ostream& operator <<(ostream& output, Operation& op)
     {
         output << "Name: " << op.operationName << endl;
         return output;
 
     }
-    virtual ~Operation();
+     virtual ~Operation();
 
 protected:
 

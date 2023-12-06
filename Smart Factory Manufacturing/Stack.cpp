@@ -28,7 +28,7 @@ void Stack::push(Operation* op)
         cout << "Stack is full\n";
         return;
     }
-    arr[++top] = op;
+    arr[++top] = op; 
 
 }
 Operation* Stack::pop()
@@ -46,7 +46,7 @@ Operation* Stack::stackTop()
         cout << "Stack is empty\n";
         return nullptr;
     }
-    return arr[top];
+    return arr[top]; 
 
 }
 void Stack::displayOperations()
