@@ -1,7 +1,7 @@
 #ifndef INSPECTIONOPERATION_H
 #define INSPECTIONOPERATION_H
 
-#include <Operation.h>
+#include "Operation.h"
 
 
 class InspectionOperation : public Operation

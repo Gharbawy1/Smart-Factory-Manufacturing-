@@ -23,4 +23,6 @@ public:
 	bool IsFull();
 	bool IsEmpty();
 	void DisplayProducts();
+
+
 };

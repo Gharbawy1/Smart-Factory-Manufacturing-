@@ -10,6 +10,7 @@ public:
 		size = 0;
 		Head = tail = NULL;
 	}
+	
 	void AddQueue() {
 		int s; cout << "> Please enter the size of Queue : "; cin >> s;
 		if (!HeadExist()) {
@@ -27,6 +28,7 @@ public:
 			size++;
 		}
 	}
+	
 	int GetLength();
 
 	void PushInSuitable() {
@@ -35,16 +37,16 @@ public:
 			if (t->IsFull()) {
 				// create new Node " No Space for next product"
 				AddQueue();
-
 				tail->InsertNewProduct();
 			}
-			else {
+			else 
+			{
 				t->InsertNewProduct();
 			}
 		}
-		else {
+		else 
+		{
 			AddQueue();
-
 			Head->InsertNewProduct();
 		}
 	}
@@ -55,6 +57,7 @@ public:
 		while (t)
 		{
 			if (t->IsEmpty()) {
+				// check to know will delete the head ?
 				if (t == Head) {
 					t->next->prev = NULL;
 					Head = t->next;
@@ -62,8 +65,10 @@ public:
 					delete t;
 
 				}
+				// node not the head
 				else {
 					t->prev->next = t->next;
+					// check if the node will be deleted (last node)?
 					if (t->next) {
 						t->next->prev = t->prev;
 					}
@@ -75,8 +80,6 @@ public:
 				curr = t->next;
 			}
 			t = curr;
-
-
 		}
 	}
 

@@ -5,13 +5,13 @@ using namespace std;
 class Operation
 {
 private:
-    string operationName;
     //timer
 
 public:
+    string operationName;
+
     Operation() {
         operationName = "No name";
-
     }
 
     void setName(std::string name) {

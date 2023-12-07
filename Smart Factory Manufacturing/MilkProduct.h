@@ -3,11 +3,12 @@
 #include"Operation.h"
 class Milk : public Product {
 public:
-    Milk() : brand("Unknown"), fat_percentage(3.5), expiration_date("2024-01-01"), state(IN_PROGRESS) {}
+    Milk() : brand("Unknown"), fat_percentage(3.5), expiration_date("2024-01-01"), state(IN_PROGRESS),NoOfOperations(0) {}
     Milk(const std::string& brand, double fat_percentage, const std::string& expiration_date) {
         this->brand = brand;
         this->fat_percentage = fat_percentage;
         this->expiration_date = expiration_date;
+        NoOfOperations = 0;
     }
     string get_name() {
         return brand;
@@ -42,10 +43,109 @@ public:
     }
 
     void AddOpertaion() {
-        cout << "Choose which operaion : [1] Pasteurization  , [2] Separation , [3] Packing .";
+        cout << "Choose The Sequance Of Operations \n       : [1] Processing  , [2] Inspection , [3] Quality Control , [4] Packging , [5] Distributuion  : ";
+        int a, b, c; 
+        cout << "> Operation 1 : "; cin >> a;
+        cout << "> Operation 2 : "; cin >> b;
+        cout << "> Operation 3 : "; cin >> c;
+        
 
-        Operation* op; op = new Operation; op->setName("Pacjing");
-        operationsContainer.push(op);
+        Operation* operationA = nullptr;
+        Operation* operationB = nullptr;
+        Operation* operationC = nullptr;
+        switch (a)
+        {
+        case 1 :
+            operationA = new ProcessingOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 2 : 
+            operationA = new InspectionOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 3:
+            operationA = new QualityControlOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 4:
+             operationA = new PackagingOperation;
+                
+                operationsContainer.push(operationA);
+                NoOfOperations++;
+                break;
+        case 5:
+                operationA = new DistributionOperation;
+                  operationsContainer.push(operationA);
+                    NoOfOperations++;
+                    break;
+
+
+        }
+        switch (b)
+        {
+        case 1:
+            operationB = new ProcessingOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 2:
+            operationB = new InspectionOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 3:
+            operationB = new QualityControlOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 4:
+            operationB = new PackagingOperation;
+
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 5:
+            operationB = new DistributionOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+
+
+        }
+        switch (c)
+        {
+        case 1:
+            operationC= new ProcessingOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 2:
+            operationC = new InspectionOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 3:
+            operationC = new QualityControlOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 4:
+            operationC = new PackagingOperation;
+
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+        case 5:
+            operationC = new DistributionOperation;
+            operationsContainer.push(operationA);
+            NoOfOperations++;
+            break;
+
+
+        }
     }
 
 private:
@@ -53,7 +153,6 @@ private:
     double fat_percentage;
     STATE state;
     std::string expiration_date;
-
     Stack operationsContainer;
     int NoOfOperations;
 };

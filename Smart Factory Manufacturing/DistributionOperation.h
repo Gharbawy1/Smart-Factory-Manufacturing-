@@ -1,7 +1,7 @@
 #ifndef DISTRIBUTIONOPERATION_H
 #define DISTRIBUTIONOPERATION_H
 
-#include <Operation.h>
+#include "Operation.h"
 
 
 class DistributionOperation : public Operation
