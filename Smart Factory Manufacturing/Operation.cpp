@@ -2,7 +2,7 @@
 
 Operation::Operation()
 {
-    operationName = "No name";
+    operationName="No name";
 }
 
 Operation::~Operation()
@@ -11,12 +11,9 @@ Operation::~Operation()
 }
 Operation::Operation(string name)
 {
-    operationName = name;
+    operationName=name;
 }
-void Operation::setName(string name)
-{
-    operationName = name;
-}
+
 string Operation::getName()
 {
     return operationName;
