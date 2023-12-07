@@ -9,10 +9,14 @@ private:
     //timer
 
 public:
-    Operation();
+    Operation() {
+        operationName = "No name";
 
-    Operation(std::string name);
-    void setName(std::string name);
+    }
+
+    void setName(std::string name) {
+        operationName = name;
+    }
     std::string getName();
     friend ostream& operator <<(ostream& output, Operation& op)
     {
@@ -20,7 +24,9 @@ public:
         return output;
 
     }
-     virtual ~Operation();
+    virtual ~Operation() {
+
+     }
 
 protected:
 

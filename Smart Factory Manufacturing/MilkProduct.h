@@ -1,6 +1,6 @@
 #pragma once
 #include"Proudct.h"
-
+#include"Operation.h"
 class Milk : public Product {
 public:
     Milk() : brand("Unknown"), fat_percentage(3.5), expiration_date("2024-01-01"), state(IN_PROGRESS) {}
@@ -48,12 +48,12 @@ public:
         return this->state;
     }
     
-    //  ERROR UNRESOLVED EROEE I STOP HERE ----- 
-    /*void AddOpertaion() {
-        cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
+    void AddOpertaion() {
+        cout << "Choose which operaion : [1] Pasteurization  , [2] Separation , [3] Packing .";
+        
         Operation* op; op = new Operation; op->setName("Pacjing");
         operationsContainer.push(op);
-    }*/
+    }
     
 private:
     std::string brand;

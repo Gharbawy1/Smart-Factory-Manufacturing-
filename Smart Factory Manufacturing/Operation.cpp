@@ -2,7 +2,6 @@
 
 Operation::Operation()
 {
-    operationName = "No name";
 }
 
 Operation::~Operation()

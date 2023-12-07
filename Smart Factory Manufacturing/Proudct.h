@@ -19,7 +19,7 @@ class Product {
 public:
     virtual std::string get_name()  = 0;
 
-    //virtual void AddOpertaion() = 0; // not done
+    virtual void AddOpertaion() = 0;// not done
     //virtual void DeleteOperation() = 0;
     
     virtual void SetData() = 0;

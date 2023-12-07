@@ -61,3 +61,10 @@ void Stack::displayOperations()
     }
 
 }
+
+bool Stack::IsEmpty() {
+    return top == -1;
+}
+bool Stack::IsFull() {
+    return top == size - 1;
+}

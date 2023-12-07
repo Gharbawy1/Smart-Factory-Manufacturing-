@@ -19,19 +19,22 @@ void QueueNode::InsertNewProduct() {
 	case 1:
 		data[rear] = new Milk;
 		data[rear]->SetData();
+		data[rear]->AddOpertaion();
 		rear = (rear + 1) % size;
 		NoElment++;
 
-		//data[rear]->AddOpertaion();
 		
 		break;
 	case 2:
 		data[rear] = new Chips;
 		NoElment++;
 		data[rear]->SetData();
+		data[rear]->AddOpertaion();
 		rear = (rear + 1) % size;
 		break;
 	}
+
+	cout << "PRODUCT INSERTED SUCSSECFULLY . \n";
 
 }
 
@@ -62,4 +65,5 @@ void QueueNode::DisplayProducts() {
 	for (int i = 0; i < NoElment; i++) {
 		data[i]->DisplayProductData();
 	}
+
 }
