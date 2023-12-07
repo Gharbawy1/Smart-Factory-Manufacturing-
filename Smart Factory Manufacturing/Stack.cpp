@@ -1,12 +1,10 @@
 #include "Stack.h"
-
 Stack::Stack()
 {
     size = 5;
     arr = new Operation * [size];
     top = -1;
 }
-
 Stack::~Stack()
 {
     for (int i = 0; i <= top; i++)
@@ -18,8 +16,6 @@ Stack::Stack(int size)
     this->size = size;
     arr = new Operation * [size];
     top = -1;
-
-
 }
 void Stack::push(Operation* op)
 {
@@ -28,8 +24,7 @@ void Stack::push(Operation* op)
         cout << "Stack is full\n";
         return;
     }
-    arr[++top] = op; 
-
+    arr[++top] = op;
 }
 Operation* Stack::pop()
 {
@@ -38,7 +33,6 @@ Operation* Stack::pop()
         return nullptr;
     }
     return arr[top--];
-
 }
 Operation* Stack::stackTop()
 {
@@ -46,8 +40,7 @@ Operation* Stack::stackTop()
         cout << "Stack is empty\n";
         return nullptr;
     }
-    return arr[top]; 
-
+    return arr[top];
 }
 void Stack::displayOperations()
 {
@@ -55,9 +48,8 @@ void Stack::displayOperations()
         cout << "Stack is empty\n";
     else
     {
-        for (int i = top;i >= 0;i--)
+        for (int i = top; i >= 0; i--)
             cout << *arr[i];
-
     }
 
 }

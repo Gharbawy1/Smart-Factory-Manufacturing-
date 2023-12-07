@@ -1,31 +1,59 @@
 #include"Factory.h"
-Factory::Factory()
-{
-    head = nullptr;
-    size = 0;
+
+Factory::Factory() {
+	size = 0;
+	Head = tail = NULL;
 }
 
-Factory::~Factory()
-{
-    //dtor
+void Factory::AddQueue() {
+	int s; cout << "> Please enter the size of Queue : "; cin >> s;
+	if (!HeadExist()) {
+
+		this->Head = new QueueNode(s); // head is current queue
+		tail = Head;
+		this->Head->next = this->Head->prev = NULL;
+		size++;
+
+	}
+
+	else {
+		tail->next = new QueueNode(s);
+		tail->next->prev = tail;
+		tail = tail->next;
+		size++;
+	}
 }
-void Factory::addQueue()
-{
-    int s;
-    cout << "Enter size of queue: ";cin >> s;
-    if (this->head == NULL) {
-        this->head = new  QueueNode(s);
-        this->head->next = this->head->prev = NULL;
-        size++;
-       
-    }
-    else {
-        QueueNode* New = new QueueNode(s);
-        QueueNode* p = head;
-        while (p->next)
-            p = p->next;
-        p->next = New;
-        New->prev = p;
 
-    }
+bool Factory::HeadExist() {
+	return Head != NULL;
+}
 
+void Factory::PushInSuitable() {
+	QueueNode* t = this->tail;
+	if (Head) {
+		if (t->IsFull()) {
+			// create new Node " No Space for next product"
+			AddQueue();
+			tail->InsertNewProduct();
+		}
+		else {
+			t->InsertNewProduct();
+		}
+	}
+	else {
+		AddQueue();
+		Head->InsertNewProduct();
+	}
+}
+
+void Factory::DisplayProducts() {
+	QueueNode* t = this->Head;
+	while (t)
+	{
+		t->DisplayProducts();
+		if (t->next) {
+			cout << "****************************";
+		}
+		t = t->next;
+	}
+}

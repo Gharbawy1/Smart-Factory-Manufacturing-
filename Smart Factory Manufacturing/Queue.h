@@ -5,9 +5,7 @@
 #include<iostream>
 #include<string>
 using namespace std;
-
-
-class QueueNode{
+class QueueNode {
 private:
 	Product** data;
 	int size;
@@ -26,6 +24,3 @@ public:
 	bool IsEmpty();
 	void DisplayProducts();
 };
-
-
-

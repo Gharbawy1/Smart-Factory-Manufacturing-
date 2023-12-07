@@ -8,11 +8,10 @@ int main() {
 
 
 	Factory f;
-	f.CheckForSuitable();
+	f.PushInSuitable();
 	f.DisplayProducts();
-	
-	
-	
+
+
 
 
 }
