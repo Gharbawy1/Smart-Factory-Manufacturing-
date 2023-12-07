@@ -1,6 +1,6 @@
 #pragma once
 #include"Proudct.h"
-
+#include"Operation.h"
 class Milk : public Product {
 public:
     Milk() : brand("Unknown"), fat_percentage(3.5), expiration_date("2024-01-01"), state(IN_PROGRESS) {}
@@ -49,7 +49,7 @@ public:
     }
     
     //  ERROR UNRESOLVED EROEE I STOP HERE ----- 
-    void AddOpertaion() {
+    /*void AddOpertaion() {
         cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
         Operation* op; op = new Operation; op->setName("Pacjing");
         operationsContainer.push(op);

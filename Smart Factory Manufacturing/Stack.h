@@ -19,6 +19,8 @@ public:
     Operation* pop();
     Operation* stackTop();
     void displayOperations();
+    bool IsEmpty();
+    bool IsFull();
     virtual ~Stack();
 
 protected:

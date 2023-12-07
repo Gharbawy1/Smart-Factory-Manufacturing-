@@ -29,16 +29,3 @@ void Factory::addQueue()
 
     }
 
-}
-int Factory::length()
-{
-    QueueNode* p = head;
-    int count = 0;
-    while (p)
-    {
-        count++;
-        p = p->next;
-
-    }
-    return count;
-}

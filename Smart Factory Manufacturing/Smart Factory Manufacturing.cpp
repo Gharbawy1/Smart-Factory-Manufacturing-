@@ -1,17 +1,16 @@
 #include<iostream>
 #include<string>
 #include"Queue.h"
+#include"Factory.h"
 using namespace std;
 
 int main() {
-	
-	QueueNode node(4);
-	node.InsertNewProduct();
-	node.InsertNewProduct();
-	node.InsertNewProduct();
-	node.InsertNewProduct();
 
-	node.DisplayProducts();
+
+	Factory f;
+	f.CheckForSuitable();
+	f.DisplayProducts();
+	
 	
 	
 
