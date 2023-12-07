@@ -17,6 +17,7 @@ private:
 
 public:
 	QueueNode* next;
+	QueueNode* prev;
 	QueueNode(int init);
 	void InsertNewProduct();
 	int RemoveAProduct(); // from front -> Shif Or circural

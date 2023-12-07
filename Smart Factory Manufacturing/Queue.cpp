@@ -19,16 +19,18 @@ void QueueNode::InsertNewProduct() {
 	case 1:
 		data[rear] = new Milk;
 		data[rear]->SetData();
-		rear = (rear + 1) % size;
 		NoElment++;
 
-		//data[rear]->AddOpertaion();
-		
+		data[rear]->AddOpertaion();
+		rear = (rear + 1) % size;
+
 		break;
 	case 2:
 		data[rear] = new Chips;
 		NoElment++;
 		data[rear]->SetData();
+		data[rear]->AddOpertaion();
+
 		rear = (rear + 1) % size;
 		break;
 	}

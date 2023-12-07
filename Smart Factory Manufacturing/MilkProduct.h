@@ -49,11 +49,11 @@ public:
     }
     
     //  ERROR UNRESOLVED EROEE I STOP HERE ----- 
-    /*void AddOpertaion() {
+    void AddOpertaion() {
         cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
         Operation* op; op = new Operation; op->setName("Pacjing");
         operationsContainer.push(op);
-    }*/
+    }
     
 private:
     std::string brand;

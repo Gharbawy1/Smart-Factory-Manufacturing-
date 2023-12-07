@@ -9,18 +9,35 @@ private:
     //timer
 
 public:
-    Operation();
+    Operation()
+    {
+        operationName = "no name";
+    }
 
-    Operation(std::string name);
-    void setName(std::string name);
-    std::string getName();
+    Operation(std::string name)
+    {
+        operationName = name;
+
+    }
+    void setName(std::string name)
+    {
+        operationName = name;
+
+    }
+    std::string getName()
+    {
+        return operationName;
+    }
     friend ostream& operator <<(ostream& output, Operation& op)
     {
         output << "Name: " << op.operationName << endl;
         return output;
 
     }
-     virtual ~Operation();
+    virtual ~Operation()
+    {
+
+     }
 
 protected:
 

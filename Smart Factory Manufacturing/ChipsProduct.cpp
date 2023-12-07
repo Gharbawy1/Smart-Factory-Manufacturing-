@@ -8,8 +8,8 @@
 //
 //}
 
-void Chips::AddOpertaion(){
-        cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
-        Operation* op; op = new Operation; op->setName("Pacjing");
-        operationsContainer.push(op);
-    }
+//void chips::addopertaion(){
+//        cout << "choose which operaion : [1] operatoin 1 , [2] operation2";
+//        operation* op; op = new operation; op->setname("pacjing");
+//        operationscontainer.push(op);
+//    }

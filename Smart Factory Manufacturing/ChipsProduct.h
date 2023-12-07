@@ -60,10 +60,10 @@ public:
 
 
     // AND HERE UNRESOLVE ERROR (EXTERNAL ERROR) :::(((
-   /* void AddOpertaion() {
+    void AddOpertaion() {
         cout << "Choose which operaion : [1] operatoin 1 , [2] operation2";
         Operation* op; op = new Operation; op->setName("Pacjing");
         operationsContainer.push(op);
-    }*/
+    }
 
 };
