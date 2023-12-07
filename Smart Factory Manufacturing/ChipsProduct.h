@@ -9,6 +9,8 @@ private:
     STATE state;
     Stack operationsContainer;
     int NoOfOperations;
+
+    
 public:
     Chips() : brand("Generic"), flavor("Salted"), weight(250), state(IN_PROGRESS) {}
     Chips(const std::string& brnd, const std::string& flvr, double weigt) {

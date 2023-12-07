@@ -22,7 +22,7 @@ public:
 
         virtual void AddOpertaion() = 0;// not done
     
-        //virtual void DeleteOperation() = 0;
+        virtual void DeleteOperation() = 0;
 
         virtual void SetData() = 0;
         virtual void DisplayProductData() = 0;

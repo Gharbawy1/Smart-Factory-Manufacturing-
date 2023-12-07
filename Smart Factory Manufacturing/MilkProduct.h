@@ -148,6 +148,26 @@ public:
         }
     }
 
+    /// <summary>
+    /// Stop here 10:08
+    /// => Confirm DeleteOperation 
+    /// Link all project parts 
+    /// main menu
+    /// </summary>
+    void DeleteOperation() {
+        if (operationsContainer.IsEmpty()) {
+            cout << "No Operation to delete :)\n";
+            return;
+        }
+        cout << "Sure For removing The operation ? ";
+        char c; cin >> c;
+        if (c == "y") {
+            operationsContainer.pop();
+            cout << "Operation Deleted Succseccfully . \n";
+        }
+
+    }
+
 private:
     std::string brand;
     double fat_percentage;

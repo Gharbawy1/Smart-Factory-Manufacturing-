@@ -6,11 +6,12 @@ class Operation
 {
 private:
     //timer
-
 public:
     string operationName;
+    //bool Finish;
 
     Operation() {
+      //  Finish = false;
         operationName = "No name";
     }
 
@@ -24,6 +25,11 @@ public:
         return output;
 
     }
+   /* void UpdateOperationState(int n) {
+        if (n == 1) {
+            Finish = true;
+        }
+    }*/
     virtual ~Operation() {
 
     }
