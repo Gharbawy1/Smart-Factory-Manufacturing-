@@ -1,28 +1,28 @@
 #ifndef OPERATION_H
 #define OPERATION_H
+
 #include<iostream>
 using namespace std;
 class Operation
 {
-private:
-    string operationName;
-    //timer
+        protected:
+            string operationName;
+            //timer
 
-public:
-    Operation();
-
-    Operation(std::string name);
-    void setName(std::string name);
-    std::string getName();
-    friend ostream& operator <<(ostream& output, Operation& op)
+    public:
+        Operation();
+        Operation(string name);
+        virtual void setName()=0;
+         virtual string getName()=0;
+        friend ostream&operator <<(ostream&output,Operation&op)
     {
-        output << "Name: " << op.operationName << endl;
+        output<<"Name: "<< op.operationName<<endl;
         return output;
 
     }
-     virtual ~Operation();
+        virtual ~Operation();
 
-protected:
+    protected:
 
 };
 
