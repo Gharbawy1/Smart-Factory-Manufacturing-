@@ -29,6 +29,7 @@ public:
         virtual void UpdateState(int) = 0;
         virtual STATE GetState() = 0;
 
+        virtual int GetNumberOfOperations() = 0;
 
 
     protected:

@@ -3,6 +3,7 @@
 #include"MilkProduct.h"
 #include"ChipsProduct.h"
 #include<iostream>
+#include<Windows.h>
 #include<string>
 using namespace std;
 class QueueNode {
@@ -23,6 +24,6 @@ public:
 	bool IsFull();
 	bool IsEmpty();
 	void DisplayProducts();
-
+	Product* GetFront();
 
 };

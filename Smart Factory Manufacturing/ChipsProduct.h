@@ -7,11 +7,12 @@ private:
     string flavor;
     double weight;
     STATE state;
-    Stack operationsContainer;
     int NoOfOperations;
 
     
 public:
+    Stack operationsContainer;
+
     Chips() : brand("Generic"), flavor("Salted"), weight(250), state(IN_PROGRESS) {}
     Chips(const std::string& brnd, const std::string& flvr, double weigt) {
         brand = brnd;
@@ -55,11 +56,11 @@ public:
 
 
     void AddOpertaion() {
-        cout << "Choose The Sequance Of Operations \n       : [1] Processing  , [2] Inspection , [3] Quality Control , [4] Packging , [5] Distributuion  : ";
+        cout << "Choose The Sequance Of Operations : \n      [1] Processing  , [2] Inspection , [3] Quality Control , [4] Packging , [5] Distributuion.\n        ";
         int a, b, c;
-        cout << "> Operation 1 : "; cin >> a;
-        cout << "> Operation 2 : "; cin >> b;
-        cout << "> Operation 3 : "; cin >> c;
+        cout << "\n      > Operation 1 : "; cin >> a;
+        cout << "      > Operation 2 : "; cin >> b;
+        cout << "      > Operation 3 : "; cin >> c;
 
         Operation* operationA = nullptr;
         Operation* operationB = nullptr;
@@ -158,5 +159,28 @@ public:
 
         }
     }
+
+
+    void DeleteOperation() {
+        if (operationsContainer.IsEmpty()) {
+            cout << "No Operation to delete :)\n";
+            return;
+        }
+       // cout << "Sure For removing The operation ? ";
+        /*char c; cin >> c;
+        if (c == 'y') {*/
+            operationsContainer.pop();
+            cout << "Operation Deleted Succseccfully . \n";
+            NoOfOperations--;
+        //}
+
+    }
+
+    int GetNumberOfOperations() {
+        return NoOfOperations;
+    }
+
+
+
 
 };

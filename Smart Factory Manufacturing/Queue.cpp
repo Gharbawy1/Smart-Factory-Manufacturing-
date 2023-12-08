@@ -1,6 +1,6 @@
 #include"Queue.h"
 QueueNode::QueueNode(int init) {
-	size = init;
+	size = 4;
 	NoElment = 0;
 	data = new Product * [size];
 	this->next = NULL;
@@ -8,7 +8,7 @@ QueueNode::QueueNode(int init) {
 }
 void QueueNode::InsertNewProduct() {
 
-	cout << "Select The Product Type :    [1] Milk , [2] Chips .";
+	cout << "Select The Product Type : \n\t\t   [1] Milk , \n\t\t   [2] Chips \n                              >>>>> ";
 	int c; cin >> c;
 	switch (c)
 	{
@@ -47,14 +47,23 @@ int QueueNode::GetNumberOfElments() {
 	return this->NoElment;
 }
 bool QueueNode::IsFull() {
-	return (rear + 1) % size == front;
+	return rear == size-1;
 }
 bool QueueNode::IsEmpty() {
 	return front == rear;
 }
 void QueueNode::DisplayProducts() {
 	for (int i = 0; i < NoElment; i++) {
+		cout << NoElment; 
+		//system("pause");
 		data[i]->DisplayProductData();
 	}
+	//system("pause");
 
+}
+Product* QueueNode::GetFront() {
+	if (IsEmpty()) {
+		return NULL;
+	}
+	return data[front];
 }

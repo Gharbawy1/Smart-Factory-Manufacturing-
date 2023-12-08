@@ -14,12 +14,13 @@ public:
         return brand;
     }
     void SetData() {
-        cout << "Enter brand: ";
+        cout << "> Enter brand: ";
         cin >> this->brand;
-        std::cout << "Enter fat percentage (%): ";
+        std::cout << "> Enter fat percentage (%): ";
         cin >> this->fat_percentage;
-        std::cout << "Enter expiration date (YYYY-MM-DD): ";
+        std::cout << "> Enter expiration date (YYYY-MM-DD): ";
         cin >> this->expiration_date;
+        cout << "\n\n > ";
     }
     void DisplayProductData() {
         std::ostringstream formattedData;
@@ -43,11 +44,11 @@ public:
     }
 
     void AddOpertaion() {
-        cout << "Choose The Sequance Of Operations \n       : [1] Processing  , [2] Inspection , [3] Quality Control , [4] Packging , [5] Distributuion  : ";
+        cout << "Choose The Sequance Of Operations : \n      [1] Processing  , [2] Inspection , [3] Quality Control , [4] Packging , [5] Distributuion.\n        ";
         int a, b, c; 
-        cout << "> Operation 1 : "; cin >> a;
-        cout << "> Operation 2 : "; cin >> b;
-        cout << "> Operation 3 : "; cin >> c;
+        cout << "\n      > Operation 1 : "; cin >> a;
+        cout << "      > Operation 2 : "; cin >> b;
+        cout << "      > Operation 3 : "; cin >> c;
         
 
         Operation* operationA = nullptr;
@@ -148,6 +149,10 @@ public:
         }
     }
 
+    int GetNumberOfOperations() {
+        return NoOfOperations;
+    }
+
     /// <summary>
     /// Stop here 10:08
     /// => Confirm DeleteOperation 
@@ -161,18 +166,20 @@ public:
         }
         cout << "Sure For removing The operation ? ";
         char c; cin >> c;
-        if (c == "y") {
+        if (c == 'y') {
             operationsContainer.pop();
             cout << "Operation Deleted Succseccfully . \n";
+            NoOfOperations--;
+
         }
 
     }
+    Stack operationsContainer;
 
 private:
     std::string brand;
     double fat_percentage;
     STATE state;
     std::string expiration_date;
-    Stack operationsContainer;
     int NoOfOperations;
 };

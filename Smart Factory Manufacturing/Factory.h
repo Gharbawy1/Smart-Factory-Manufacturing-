@@ -1,24 +1,27 @@
 #pragma once
 #include"Queue.h"
+#include"Stack.h"
+const int s = 4;
 class Factory {
 private:
 	int size;
 	QueueNode* Head;
 	QueueNode* tail;
+	int numOfqueue;
 public:
 	Factory() {
 		size = 0;
 		Head = tail = NULL;
+		numOfqueue = 0;
 	}
 	
 	void AddQueue() {
-		int s; cout << "> Please enter the size of Queue : "; cin >> s;
 		if (!HeadExist()) {
 			this->Head = new QueueNode(s); // head is current queue
 			tail = Head;
 			this->Head->next = this->Head->prev = NULL;
 			size++;
-
+			numOfqueue++;
 		}
 
 		else {
@@ -26,11 +29,10 @@ public:
 			tail->next->prev = tail;
 			tail = tail->next;
 			size++;
+			numOfqueue++;
 		}
 	}
-	
 	int GetLength();
-
 	void PushInSuitable() {
 		QueueNode* t = this->tail;
 		if (Head) {
@@ -50,38 +52,73 @@ public:
 			Head->InsertNewProduct();
 		}
 	}
-	void DeleteFinishedQueue() {
-		QueueNode* t = this->Head;
-		QueueNode* curr = t;
-		bool IsDeleted = false;
-		while (t)
-		{
-			if (t->IsEmpty()) {
-				// check to know will delete the head ?
-				if (t == Head) {
-					t->next->prev = NULL;
-					Head = t->next;
-					curr = Head;
-					delete t;
 
-				}
-				// node not the head
-				else {
-					t->prev->next = t->next;
-					// check if the node will be deleted (last node)?
-					if (t->next) {
-						t->next->prev = t->prev;
+	// Delete Section
+	bool IsProductFinished() {
+		return Head->GetFront()->GetNumberOfOperations() == 0;
+	}
+	void DeleteProduct() {
+		QueueNode* t = this->Head;
+		if (t != NULL) {
+			if (IsProductFinished()) {
+				t->RemoveAProduct();
+			}
+			else {
+				cout << "This Product Still In Processing \n";
+				cout << "Do You Want To Delete All Operations  ?"; char c; cin >> c;
+				if (c == 'y') {
+					int cnt = t->GetFront()->GetNumberOfOperations();
+					while (cnt--)
+					{
+						DeleteOperationsFromProduct();
 					}
-					curr = t->next;
-					delete t;
+					t->RemoveAProduct();
+				}
+			}
+			if (t->IsEmpty()) {
+				DeleteFinishedQueue();
+			}
+
+			/*if (!t->IsEmpty()) {
+				t->RemoveAProduct();
+				if (t->IsEmpty()) {
+					DeleteFinishedQueue();
 				}
 			}
 			else {
-				curr = t->next;
-			}
-			t = curr;
+				cout << "Product Not Found.\n";
+				return;
+			}*/
 		}
 	}
+	void DeleteOperationsFromProduct() {
+		QueueNode* t = this->Head;
+		if (t != NULL) {
+			cout << "This Product still have " << t->GetFront()->GetNumberOfOperations() << "In Progress ";
+			cout << "\n > Sure For Deleting ?";
+			char c; cin >> c;
+			if (c == 'y') {
+				t->GetFront()->DeleteOperation();
+			}
+		}
+		else {
+			cout << "List Empty\n";
+			return;
+		}
+
+	}
+	void DeleteFinishedQueue() {
+		QueueNode* t = this->Head;
+			if (t->IsEmpty()) {
+				// check to know will delete the head ?
+					t->next->prev = NULL;
+					Head = t->next;	
+					delete t;
+			}
+	}
+
+
+
 
 	bool HeadExist() {
 		return Head != NULL;
@@ -93,9 +130,10 @@ public:
 		{
 			t->DisplayProducts();
 			if (t->next) {
-				cout << "****************************";
+				cout << "****************************\n";
 			}
 			t = t->next;
+			cout << numOfqueue;
 		}
 	}
 };
