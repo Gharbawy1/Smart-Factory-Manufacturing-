@@ -7,12 +7,11 @@ private:
 	int size;
 	QueueNode* Head;
 	QueueNode* tail;
-	int numOfqueue;
 public:
 	Factory() {
 		size = 0;
 		Head = tail = NULL;
-		numOfqueue = 0;
+		
 	}
 	
 	void AddQueue() {
@@ -21,7 +20,7 @@ public:
 			tail = Head;
 			this->Head->next = this->Head->prev = NULL;
 			size++;
-			numOfqueue++;
+			
 		}
 
 		else {
@@ -29,7 +28,7 @@ public:
 			tail->next->prev = tail;
 			tail = tail->next;
 			size++;
-			numOfqueue++;
+			
 		}
 	}
 	int GetLength();
@@ -133,7 +132,6 @@ public:
 				cout << "****************************\n";
 			}
 			t = t->next;
-			cout << numOfqueue;
 		}
 	}
 };

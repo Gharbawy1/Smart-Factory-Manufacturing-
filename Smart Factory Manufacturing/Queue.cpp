@@ -16,17 +16,15 @@ void QueueNode::InsertNewProduct() {
 		data[rear] = new Milk;
 		data[rear]->SetData();
 		data[rear]->AddOpertaion();
-		rear = (rear + 1) % size;
+		rear++;
 		NoElment++;
-
-
 		break;
 	case 2:
-		data[rear] = new Chips;
-		NoElment++;
+		data[rear] = new Chips;	
 		data[rear]->SetData();
 		data[rear]->AddOpertaion();
-		rear = (rear + 1) % size;
+		rear++;
+		NoElment++;
 		break;
 	}
 
@@ -47,14 +45,16 @@ int QueueNode::GetNumberOfElments() {
 	return this->NoElment;
 }
 bool QueueNode::IsFull() {
-	return rear == size-1;
+	cout << "REAE = " << rear << "        Size = " << size;
+	system("pause");
+	return rear == size;
 }
 bool QueueNode::IsEmpty() {
 	return front == rear;
 }
 void QueueNode::DisplayProducts() {
 	for (int i = 0; i < NoElment; i++) {
-		cout << NoElment; 
+		cout << NoElment<< "     ";
 		//system("pause");
 		data[i]->DisplayProductData();
 	}
