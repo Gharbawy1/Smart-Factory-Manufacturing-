@@ -169,8 +169,8 @@ public:
        // cout << "Sure For removing The operation ? ";
         /*char c; cin >> c;
         if (c == 'y') {*/
-            operationsContainer.pop();
-            cout << "Operation Deleted Succseccfully . \n";
+            cout<<*(operationsContainer.pop());
+            cout << "Finished Succseccfully . \n";
             NoOfOperations--;
         //}
 

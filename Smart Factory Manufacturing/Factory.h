@@ -1,6 +1,7 @@
 #pragma once
 #include"Queue.h"
 #include"Stack.h"
+#include<vector>
 const int s = 4;
 class Factory {
 private:
@@ -8,6 +9,7 @@ private:
 	QueueNode* Head;
 	QueueNode* tail;
 public:
+	vector<Product*> FinishedProduct;
 	Factory() {
 		size = 0;
 		Head = tail = NULL;
@@ -56,48 +58,75 @@ public:
 	bool IsProductFinished() {
 		return Head->GetFront()->GetNumberOfOperations() == 0;
 	}
+	void ManageDeletion() {
+		cout << "\n\t\t\t\t\t\t    ---------------------- ";
+		cout << "\n\t\t\t\t\t\t =>|   Operations Manager  |";
+		cout << "\n\t\t\t\t\t\t    ---------------------- \n\n";
+		QueueNode* t = this->Head;
+		cout << "    ==> Finish \n         [1] Operation By Operation . \n         [2] Finish All Operations. \n\n \t\t\t >"; int c; cin >> c;
+		switch (c)
+		{
+		case 1:
+			FinishOneOperatoin();
+			break;
+		case 2:
+			DeleteProduct();
+			break;
+		}
+
+	
+	}
+
+
 	void DeleteProduct() {
 		QueueNode* t = this->Head;
 		if (t != NULL) {
 			if (IsProductFinished()) {
 				t->RemoveAProduct();
 			}
-			else {
-				cout << "This Product Still In Processing \n";
-				cout << "Do You Want To Delete All Operations  ?"; char c; cin >> c;
-				if (c == 'y') {
-					int cnt = t->GetFront()->GetNumberOfOperations();
-					while (cnt--)
-					{
-						DeleteOperationsFromProduct();
-					}
-					t->RemoveAProduct();
-				}
+			else {	
+						DeleteAllOperationsFromProduct();
+						FinishedProduct.push_back(t->GetFront());
+						cout << "PPPPUUUUSSSEEEDDD " << FinishedProduct.size()<<"\n";
+						FinishedProduct[0]->DisplayProductData();
+						system("pause");
+						t->RemoveAProduct();
 			}
 			if (t->IsEmpty()) {
 				DeleteFinishedQueue();
 			}
 
-			/*if (!t->IsEmpty()) {
-				t->RemoveAProduct();
-				if (t->IsEmpty()) {
-					DeleteFinishedQueue();
-				}
-			}
-			else {
-				cout << "Product Not Found.\n";
-				return;
-			}*/
+			
 		}
 	}
-	void DeleteOperationsFromProduct() {
+	void FinishOneOperatoin() {
 		QueueNode* t = this->Head;
 		if (t != NULL) {
-			cout << "This Product still have " << t->GetFront()->GetNumberOfOperations() << "In Progress ";
-			cout << "\n > Sure For Deleting ?";
+			if (!t->IsEmpty()) {
+				t->GetFront()->DeleteOperation();
+				if (t->GetFront()->GetNumberOfOperations() == 0) {
+					// delete the product (stack is empty)4
+					FinishedProduct.push_back(t->GetFront());
+
+					t->RemoveAProduct();
+				}
+			}
+			
+		}
+	}
+	void DeleteAllOperationsFromProduct() {
+		QueueNode* t = this->Head;
+		if (t != NULL) {
+			cout << "This Product still have " << t->GetFront()->GetNumberOfOperations() << " Operaions In Progress ";
+			cout << "\n > Sure For Finish All these operations ?";
 			char c; cin >> c;
 			if (c == 'y') {
-				t->GetFront()->DeleteOperation();
+				int cnt = t->GetFront()->GetNumberOfOperations();
+				while (cnt--)
+				{
+					t->GetFront()->DeleteOperation();
+				}
+				//t->GetFront()->UpdateState(1);
 			}
 		}
 		else {
@@ -115,7 +144,7 @@ public:
 					delete t;
 			}
 	}
-
+	
 
 
 
@@ -132,6 +161,11 @@ public:
 				cout << "****************************\n";
 			}
 			t = t->next;
+		}
+	}
+	void DisplayedFinishedProducts() {
+		for (int i = 0; i < FinishedProduct.size(); i++) {
+			 FinishedProduct[i]->DisplayProductData();
 		}
 	}
 };

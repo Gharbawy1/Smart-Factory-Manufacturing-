@@ -164,14 +164,14 @@ public:
             cout << "No Operation to delete :)\n";
             return;
         }
-        cout << "Sure For removing The operation ? ";
+       /* cout << "Sure For removing The operation ? ";
         char c; cin >> c;
-        if (c == 'y') {
-            operationsContainer.pop();
-            cout << "Operation Deleted Succseccfully . \n";
+        if (c == 'y') {*/
+            cout << *operationsContainer.pop();
+            cout << " Operation Finished Succseccfully . \n";
             NoOfOperations--;
 
-        }
+       // }
 
     }
     Stack operationsContainer;

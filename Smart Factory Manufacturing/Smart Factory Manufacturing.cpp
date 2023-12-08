@@ -73,11 +73,11 @@ void DisplayMenu() {
 			}
 			else if (i == 2) {
 				color(Set[i]);
-				cout << i + 1 << ".Delete A Product   " << std::endl;
+				cout << i + 1 << ".Manufacturing process    " << std::endl;
 			}
 			else if (i == 3) {
 				color(Set[i]);
-				cout << i + 1 << ".   " << std::endl;
+				cout << i + 1 << ".Display Finished Product ." << std::endl;
 			}
 			else if (i == 4) {
 				color(Set[i]);
@@ -125,9 +125,12 @@ void DisplayMenu() {
 				system("pause");
 			}
 			else if (counter == 2) {
-				factory.DeleteProduct();
+				factory.ManageDeletion();
+				system("pause");
 			}
 			else if (counter == 3) {
+				factory.DisplayedFinishedProducts();
+				system("pause");
 			}
 			else if (counter == 4) {
 			}

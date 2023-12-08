@@ -19,7 +19,7 @@ public:
 	QueueNode* prev;
 	QueueNode(int init);
 	void InsertNewProduct();
-	int RemoveAProduct(); // from front -> Shif Or circural
+	void RemoveAProduct(); // from front -> Shif Or circural
 	int GetNumberOfElments();
 	bool IsFull();
 	bool IsEmpty();

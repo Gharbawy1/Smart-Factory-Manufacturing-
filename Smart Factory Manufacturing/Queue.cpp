@@ -33,28 +33,30 @@ void QueueNode::InsertNewProduct() {
 }
 
 
-int QueueNode::RemoveAProduct() {
+void QueueNode::RemoveAProduct() {
 	if (IsEmpty()) {
-		return 0; // mean if returned 0 delete this node cause it became empty
+		cout << "Empty Queue Cant Delete . ";
+		return ; // mean if returned 0 delete this node cause it became empty
 	}
 	delete data[front]; // this is pointer no refrence 
-	front = (front + 1) % size;
-	return 1;// mean removed sucsess
+	//front = (front + 1) % size;
+	front++;
+	NoElment--;
+	
 }
 int QueueNode::GetNumberOfElments() {
 	return this->NoElment;
 }
 bool QueueNode::IsFull() {
-	cout << "REAE = " << rear << "        Size = " << size;
-	system("pause");
+	
 	return rear == size;
 }
 bool QueueNode::IsEmpty() {
 	return front == rear;
 }
 void QueueNode::DisplayProducts() {
-	for (int i = 0; i < NoElment; i++) {
-		cout << NoElment<< "     ";
+	for (int i = front; i < rear; i++) {
+		
 		//system("pause");
 		data[i]->DisplayProductData();
 	}
