@@ -9,7 +9,7 @@ class QualityControlOperation : public Operation
     public:
         QualityControlOperation()
         {
-            operationName="Quality Control Operation";
+            operationName="Quality Control ";
         }
         virtual ~QualityControlOperation()
         {

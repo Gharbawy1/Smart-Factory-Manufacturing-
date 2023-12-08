@@ -9,7 +9,7 @@ class DistributionOperation : public Operation
     public:
         DistributionOperation()
         {
-            operationName="Distribution Operation";
+            operationName="Distribution ";
         }
         virtual ~DistributionOperation()
         {

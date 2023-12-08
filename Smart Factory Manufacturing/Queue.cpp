@@ -41,8 +41,9 @@ void QueueNode::RemoveAProduct() {
 	delete data[front]; // this is pointer no refrence 
 	//front = (front + 1) % size;
 	front++;
-	NoElment--;
 	
+	NoElment--;
+	return;
 }
 int QueueNode::GetNumberOfElments() {
 	return this->NoElment;

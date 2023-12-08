@@ -89,28 +89,28 @@ public:
         {
         case 1:
             operationB = new ProcessingOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationB);
             NoOfOperations++;
             break;
         case 2:
             operationB = new InspectionOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationB);
             NoOfOperations++;
             break;
         case 3:
             operationB = new QualityControlOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationB);
             NoOfOperations++;
             break;
         case 4:
             operationB = new PackagingOperation;
 
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationB);
             NoOfOperations++;
             break;
         case 5:
             operationB = new DistributionOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationB);
             NoOfOperations++;
             break;
 
@@ -120,28 +120,28 @@ public:
         {
         case 1:
             operationC= new ProcessingOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationC);
             NoOfOperations++;
             break;
         case 2:
             operationC = new InspectionOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationC);
             NoOfOperations++;
             break;
         case 3:
             operationC = new QualityControlOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationC);
             NoOfOperations++;
             break;
         case 4:
             operationC = new PackagingOperation;
 
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationC);
             NoOfOperations++;
             break;
         case 5:
             operationC = new DistributionOperation;
-            operationsContainer.push(operationA);
+            operationsContainer.push(operationC);
             NoOfOperations++;
             break;
 

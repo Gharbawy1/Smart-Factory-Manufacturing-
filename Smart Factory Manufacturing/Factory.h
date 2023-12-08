@@ -1,7 +1,9 @@
 #pragma once
 #include"Queue.h"
 #include"Stack.h"
+#include"Proudct.h"
 #include<vector>
+
 const int s = 4;
 class Factory {
 private:
@@ -9,11 +11,14 @@ private:
 	QueueNode* Head;
 	QueueNode* tail;
 public:
-	vector<Product*> FinishedProduct;
+	//vector<Product*> FinishedProduct;
+	Product** arr;  
+	int FinishedCounter;
 	Factory() {
 		size = 0;
 		Head = tail = NULL;
-		
+		FinishedCounter = 0;
+		//arr = new Product[5];
 	}
 	
 	void AddQueue() {
@@ -60,7 +65,7 @@ public:
 	}
 	void ManageDeletion() {
 		cout << "\n\t\t\t\t\t\t    ---------------------- ";
-		cout << "\n\t\t\t\t\t\t =>|   Operations Manager  |";
+		cout << "\n\t\t\t\t\t\t =>|  Operations Manager  |";
 		cout << "\n\t\t\t\t\t\t    ---------------------- \n\n";
 		QueueNode* t = this->Head;
 		cout << "    ==> Finish \n         [1] Operation By Operation . \n         [2] Finish All Operations. \n\n \t\t\t >"; int c; cin >> c;
@@ -86,10 +91,8 @@ public:
 			}
 			else {	
 						DeleteAllOperationsFromProduct();
-						FinishedProduct.push_back(t->GetFront());
-						cout << "PPPPUUUUSSSEEEDDD " << FinishedProduct.size()<<"\n";
-						FinishedProduct[0]->DisplayProductData();
-						system("pause");
+						//FinishedProduct.push_back(t->GetFront());
+						//arr[FinishedCounter++] = t->GetFront();
 						t->RemoveAProduct();
 			}
 			if (t->IsEmpty()) {
@@ -106,7 +109,8 @@ public:
 				t->GetFront()->DeleteOperation();
 				if (t->GetFront()->GetNumberOfOperations() == 0) {
 					// delete the product (stack is empty)4
-					FinishedProduct.push_back(t->GetFront());
+					//FinishedProduct.push_back(t->GetFront());
+					//arr[FinishedCounter++] = t->GetFront();
 
 					t->RemoveAProduct();
 				}
@@ -137,12 +141,15 @@ public:
 	}
 	void DeleteFinishedQueue() {
 		QueueNode* t = this->Head;
-			if (t->IsEmpty()) {
-				// check to know will delete the head ?
-					t->next->prev = NULL;
-					Head = t->next;	
-					delete t;
+		if (t->IsEmpty()) {
+			// check to know will delete the head ?
+			if (t->next){
+				t->next->prev = NULL;
 			}
+				Head =Head->next;
+				delete t;
+				
+		}
 	}
 	
 
@@ -164,8 +171,8 @@ public:
 		}
 	}
 	void DisplayedFinishedProducts() {
-		for (int i = 0; i < FinishedProduct.size(); i++) {
-			 FinishedProduct[i]->DisplayProductData();
+		for (int i = 0; i < FinishedCounter; i++) {
+			//arr[i]->DisplayProductData();
 		}
 	}
 };

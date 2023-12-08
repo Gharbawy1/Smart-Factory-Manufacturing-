@@ -9,7 +9,7 @@ class PackagingOperation : public Operation
     public:
         PackagingOperation()
         {
-            operationName="Packaging Operation";
+            operationName="Packaging ";
 
         }
         virtual ~PackagingOperation()

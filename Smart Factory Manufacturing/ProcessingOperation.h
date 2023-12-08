@@ -9,7 +9,7 @@ class ProcessingOperation : public Operation
     public:
         ProcessingOperation()
         {
-            operationName="Processing Operation";
+            operationName="Processing ";
         }
         virtual ~ProcessingOperation()
         {

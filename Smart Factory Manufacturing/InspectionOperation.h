@@ -9,7 +9,7 @@ class InspectionOperation : public Operation
     public:
         InspectionOperation()
         {
-            operationName="Inspection Operation";
+            operationName="Inspection ";
         }
         virtual ~InspectionOperation()
         {

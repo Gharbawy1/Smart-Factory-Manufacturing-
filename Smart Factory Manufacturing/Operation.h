@@ -21,7 +21,7 @@ public:
     std::string getName();
     friend ostream& operator <<(ostream& output, Operation& op)
     {
-        output << "Name: " << op.operationName << endl;
+        output <<  op.operationName;
         return output;
 
     }
