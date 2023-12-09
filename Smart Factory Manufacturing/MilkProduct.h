@@ -153,12 +153,7 @@ public:
         return NoOfOperations;
     }
 
-    /// <summary>
-    /// Stop here 10:08
-    /// => Confirm DeleteOperation 
-    /// Link all project parts 
-    /// main menu
-    /// </summary>
+    
     void DeleteOperation() {
         if (operationsContainer.IsEmpty()) {
             cout << "No Operation to delete :)\n";

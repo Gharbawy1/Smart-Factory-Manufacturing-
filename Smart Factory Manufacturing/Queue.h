@@ -13,8 +13,11 @@ private:
 	int NoElment;
 	int front;
 	int rear;
+	
 
 public:
+	static int NumOfFinishedMilkProducts;
+	static int NumOfFinishedChipsProducts;
 	QueueNode* next;
 	QueueNode* prev;
 	QueueNode(int init);
@@ -24,6 +27,9 @@ public:
 	bool IsFull();
 	bool IsEmpty();
 	void DisplayProducts();
+	void CalcProducts();
+	int GetNumOfMilkProducts();
+	int GetNumOfChipsProducts();
 	Product* GetFront();
 
 };

@@ -10,15 +10,16 @@ private:
 	int size;
 	QueueNode* Head;
 	QueueNode* tail;
+	int AllNumOfFinishedMilkProducts;
+	int AllNumOfFinishedChipsProducts;
 public:
-	//vector<Product*> FinishedProduct;
-	Product** arr;  
+	Product** FinishedProducts;
 	int FinishedCounter;
 	Factory() {
 		size = 0;
 		Head = tail = NULL;
 		FinishedCounter = 0;
-		//arr = new Product[5];
+		FinishedProducts = new Product * [10];
 	}
 	
 	void AddQueue() {
@@ -81,8 +82,6 @@ public:
 
 	
 	}
-
-
 	void DeleteProduct() {
 		QueueNode* t = this->Head;
 		if (t != NULL) {
@@ -91,8 +90,7 @@ public:
 			}
 			else {	
 						DeleteAllOperationsFromProduct();
-						//FinishedProduct.push_back(t->GetFront());
-						//arr[FinishedCounter++] = t->GetFront();
+						FinishedProducts[FinishedCounter++] = t->GetFront();
 						t->RemoveAProduct();
 			}
 			if (t->IsEmpty()) {
@@ -108,14 +106,10 @@ public:
 			if (!t->IsEmpty()) {
 				t->GetFront()->DeleteOperation();
 				if (t->GetFront()->GetNumberOfOperations() == 0) {
-					// delete the product (stack is empty)4
-					//FinishedProduct.push_back(t->GetFront());
-					//arr[FinishedCounter++] = t->GetFront();
-
+					FinishedProducts[FinishedCounter++] = t->GetFront();
 					t->RemoveAProduct();
 				}
 			}
-			
 		}
 	}
 	void DeleteAllOperationsFromProduct() {
@@ -155,6 +149,31 @@ public:
 
 
 
+	/// <summary>
+	/// Stop Here 2:25 AM
+	/// => Display all nums of products(all, milk,chips) and do the same in finihed product
+	/// </summary>
+	void ClearFinishedProducts() {
+		CalcNumOfProducts();
+		cout << " > You have " << FinishedCounter << " Finished Product .\n\n";
+		cout << " > " << AllNumOfFinishedMilkProducts <<" Milk Product .";
+		cout << " > "<< AllNumOfFinishedChipsProducts << " Chips Product .";
+	}
+
+
+	
+	void CalcNumOfProducts() {
+		QueueNode* t = this->Head;
+		
+		while (t)
+		{
+			t->CalcProducts();
+			t = t->next;
+		}
+		this->AllNumOfFinishedMilkProducts += t->NumOfFinishedMilkProducts;
+		this->AllNumOfFinishedChipsProducts += t->NumOfFinishedChipsProducts;
+	}
+	
 	bool HeadExist() {
 		return Head != NULL;
 
@@ -172,7 +191,8 @@ public:
 	}
 	void DisplayedFinishedProducts() {
 		for (int i = 0; i < FinishedCounter; i++) {
-			//arr[i]->DisplayProductData();
+			FinishedProducts[i]->DisplayProductData();
 		}
+
 	}
 };

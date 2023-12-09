@@ -81,7 +81,7 @@ void DisplayMenu() {
 			}
 			else if (i == 4) {
 				color(Set[i]);
-				cout << i + 1 << ".   " << std::endl;
+				cout << i + 1 << ".Show Stat   " << std::endl;
 			}
 			else if (i == 5) {
 				color(Set[i]);
@@ -133,6 +133,8 @@ void DisplayMenu() {
 				system("pause");
 			}
 			else if (counter == 4) {
+				factory.ClearFinishedProducts();
+				break;
 			}
 			else if (counter == 5) {
 			}
