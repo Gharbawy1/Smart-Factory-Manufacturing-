@@ -65,15 +65,16 @@ void DisplayMenu() {
 			// Display the menu option
 			if (i == 0) {
 				color(Set[i]);
-				cout << i + 1 << ".Add New Product " << std::endl;
+				cout << i + 1 << ".Add New Product ." << std::endl;
 			}
 			else if (i == 1) {
 				color(Set[i]);
-				cout << i + 1 << ".Display Products   " << std::endl;
+				// finished still in proccissing 
+				cout << i + 1 << ".Display Factory Products ." << std::endl;
 			}
 			else if (i == 2) {
 				color(Set[i]);
-				cout << i + 1 << ".Manufacturing process    " << std::endl;
+				cout << i + 1 << ".Manufacturing process ." << std::endl;
 			}
 			else if (i == 3) {
 				color(Set[i]);
@@ -81,7 +82,7 @@ void DisplayMenu() {
 			}
 			else if (i == 4) {
 				color(Set[i]);
-				cout << i + 1 << ".Show Stat   " << std::endl;
+				cout << i + 1 << ".Show Statistics ." << std::endl;
 			}
 			else if (i == 5) {
 				color(Set[i]);
@@ -133,8 +134,8 @@ void DisplayMenu() {
 				system("pause");
 			}
 			else if (counter == 4) {
-				factory.ClearFinishedProducts();
-				break;
+				factory.DisplayNumOfFinishedProducts();
+				system("pause");
 			}
 			else if (counter == 5) {
 			}

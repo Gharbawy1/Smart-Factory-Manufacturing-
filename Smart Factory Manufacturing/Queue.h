@@ -3,6 +3,8 @@
 #include"MilkProduct.h"
 #include"ChipsProduct.h"
 #include<iostream>
+#include<conio.h>
+#include<iomanip>
 #include<Windows.h>
 #include<string>
 using namespace std;
@@ -16,8 +18,10 @@ private:
 	
 
 public:
-	static int NumOfFinishedMilkProducts;
-	static int NumOfFinishedChipsProducts;
+     //static int NumOfMilkProducts;
+	 //static int NumOfChipsProducts;
+	
+
 	QueueNode* next;
 	QueueNode* prev;
 	QueueNode(int init);
@@ -27,9 +31,11 @@ public:
 	bool IsFull();
 	bool IsEmpty();
 	void DisplayProducts();
-	void CalcProducts();
+
+	/*void CalcProducts();
 	int GetNumOfMilkProducts();
-	int GetNumOfChipsProducts();
+	int GetNumOfChipsProducts();*/
+
 	Product* GetFront();
 
 };

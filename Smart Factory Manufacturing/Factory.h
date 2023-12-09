@@ -3,15 +3,16 @@
 #include"Stack.h"
 #include"Proudct.h"
 #include<vector>
-
+#include<algorithm>
 const int s = 4;
 class Factory {
 private:
 	int size;
 	QueueNode* Head;
 	QueueNode* tail;
-	int AllNumOfFinishedMilkProducts;
-	int AllNumOfFinishedChipsProducts;
+	int NumOfFinishMilkProducts;
+	int NumOfFinishChipsProducts;
+	int NumOfAllProducts;
 public:
 	Product** FinishedProducts;
 	int FinishedCounter;
@@ -20,6 +21,7 @@ public:
 		Head = tail = NULL;
 		FinishedCounter = 0;
 		FinishedProducts = new Product * [10];
+		NumOfFinishMilkProducts = 0; NumOfFinishChipsProducts = 0; NumOfAllProducts = 0;
 	}
 	
 	void AddQueue() {
@@ -47,16 +49,19 @@ public:
 				// create new Node " No Space for next product"
 				AddQueue();
 				tail->InsertNewProduct();
+				NumOfAllProducts++;
 			}
 			else 
 			{
 				t->InsertNewProduct();
+				NumOfAllProducts++;
 			}
 		}
 		else 
 		{
 			AddQueue();
 			Head->InsertNewProduct();
+			NumOfAllProducts++;
 		}
 	}
 
@@ -149,36 +154,12 @@ public:
 
 
 
-	/// <summary>
-	/// Stop Here 2:25 AM
-	/// => Display all nums of products(all, milk,chips) and do the same in finihed product
-	/// </summary>
-	void ClearFinishedProducts() {
-		CalcNumOfProducts();
-		cout << " > You have " << FinishedCounter << " Finished Product .\n\n";
-		cout << " > " << AllNumOfFinishedMilkProducts <<" Milk Product .";
-		cout << " > "<< AllNumOfFinishedChipsProducts << " Chips Product .";
-	}
-
-
-	
-	void CalcNumOfProducts() {
-		QueueNode* t = this->Head;
-		
-		while (t)
-		{
-			t->CalcProducts();
-			t = t->next;
-		}
-		this->AllNumOfFinishedMilkProducts += t->NumOfFinishedMilkProducts;
-		this->AllNumOfFinishedChipsProducts += t->NumOfFinishedChipsProducts;
-	}
-	
 	bool HeadExist() {
 		return Head != NULL;
 
 	}
 	void DisplayProducts() {
+		cout << " >> We Have " << abs(NumOfAllProducts - FinishedCounter) << " Product In This Factory In Procissing \n\n";
 		QueueNode* t = this->Head;
 		while (t)
 		{
@@ -190,9 +171,44 @@ public:
 		}
 	}
 	void DisplayedFinishedProducts() {
+		cout << "> We Have " << FinishedCounter << " Finished Product Sucsessfully\n\n";
+		int FInishedmilkfound = 0;
+
+		cout << " ======== Finished Milk Products ======== \n\n";
 		for (int i = 0; i < FinishedCounter; i++) {
-			FinishedProducts[i]->DisplayProductData();
+			 if (Milk* milk = dynamic_cast<Milk*>(FinishedProducts[i])) {
+				 FinishedProducts[i]->DisplayProductData(); FInishedmilkfound = 1;
+			}
+		}
+		if (FInishedmilkfound == 0) {
+			cout << "=> There are no Finished Milk products Untill Now \n\n";
+		}
+		cout << " ======== Finished Chips Products ======== \n\n";
+		int FInishedChipsfound = 0;
+		for (int i = 0; i < FinishedCounter; i++) {
+			if (Chips* chips = dynamic_cast<Chips*>(FinishedProducts[i])) {
+				FinishedProducts[i]->DisplayProductData();
+				FInishedChipsfound = 1;
+			}
+		}
+		if (FInishedChipsfound == 0) {
+			cout << "=> There are no Finished Chips products Untill Now \n\n";
 		}
 
+	}
+	void DisplayNumOfFinishedProducts() {
+		this->NumOfFinishMilkProducts = 0;
+		this->NumOfFinishChipsProducts = 0;
+		for (int i = 0; i < FinishedCounter; i++) {
+			if (Chips* chips = dynamic_cast<Chips*>(FinishedProducts[i])) {
+				NumOfFinishChipsProducts++;
+			}
+			else if (Milk* milk = dynamic_cast<Milk*>(FinishedProducts[i])) {
+				NumOfFinishMilkProducts++;
+			}
+		}
+		
+		cout << " \n > We Have " << NumOfFinishMilkProducts << " Finished Milk Product .\n\n";
+		cout << " > We Have " << NumOfFinishChipsProducts << " Finished Chips Product .\n";
 	}
 };
