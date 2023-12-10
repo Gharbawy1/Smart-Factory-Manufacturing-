@@ -5,9 +5,12 @@
 #include<iomanip>
 #include"Queue.h"
 #include"Factory.h"
+
 using namespace std;
 void PrintFirstMenu();
 void DisplayMenu();
+void DisplayFactoryWord();
+void loading(int n);
 Factory factory;
 void color(int color) {
 
@@ -21,6 +24,7 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
 int main() {
+	loading(20);
 	PrintFirstMenu();
 	system("cls");
 	DisplayMenu();
@@ -31,11 +35,23 @@ int main() {
 }
 
 
+void DisplayFactoryWord() {
+	
+	std::cout << " __           _                   \n";
+	std::cout << "/ _|         | |                  \n";
+	std::cout << "| |_ __ _  ___| |_ ___  _ __ _   _\n";
+	std::cout << "|  _/ _` |/ __| __/ _ \\| '__| | |\n";
+	std::cout << "| || (_| | (__| || (_) | |  | |_| |\n";
+	std::cout << "|_| \\__,_|\\___|\\__\\___/|_|   \\__, |\n";
+	std::cout << "                              __/ |\n";
+	std::cout << "                             |___/ \n";
 
+	
+}
 
 void PrintFirstMenu() {
 	cout << "\n\n\n\n\n\n\n\n\n\n\t\t\t\t         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\";
-	cout << "\n\n\t\t\t\t\t            Smart Factory Manufacturing\n\n";
+	cout << "\n\n\t\t\t\t\t          Smart Factory Manufacturing\n\n";
 	cout << "\t\t\t\t         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\";
 	cout << endl << endl << endl;
 	system("pause");
@@ -43,17 +59,16 @@ void PrintFirstMenu() {
 
 }
 void DisplayMenu() {
-	int Set[] = { 7, 7, 7, 7, 7, 7, 7, 7, 7 ,7 }; // white color
+	int Set[] = { 7, 7, 7, 7, 7, 7 }; // white color
 	int counter = 0;
 	char key;
 
 	while (true) {
 		system("cls"); // Clear the screen for a fresh display
 
-		cout << "\n\n\t\t\t\t\t\t   : MAIN OPTIONS MENU :\n\n\n\n\n";
-
-		for (int i = 0; i < 10; i++) {
-			gotoxy(19, 5 + i); // Move to the appropriate position to display the arrow
+		DisplayFactoryWord();
+		for (int i = 0; i < 6; i++) {
+			gotoxy(40, 8 + i); // Move to the appropriate position to display the arrow
 			if (i == counter) {
 				color(12); // Display the arrow in red for the selected option
 				cout << "--> ";
@@ -84,10 +99,12 @@ void DisplayMenu() {
 				color(Set[i]);
 				cout << i + 1 << ".Show Statistics ." << std::endl;
 			}
+			
 			else if (i == 5) {
 				color(Set[i]);
-				cout << i + 1 << ".   " << std::endl;
+				cout << i + 1 << ".Exit   " << std::endl;
 			}
+			/*
 			else if (i == 6) {
 				color(Set[i]);
 				cout << i + 1 << ".   " << std::endl;
@@ -103,17 +120,22 @@ void DisplayMenu() {
 			else if (i == 9) {
 				color(Set[i]);
 				cout << i + 1 << ".  ." << std::endl;
-			}
+			}*/
 		}
 
 		key = _getch();
 		if (key == 72 && counter > 0) { // up
 			Set[counter] = 7;
 			counter--;
+			
 		}
-		if (key == 80 && counter < 9) { // down
+		if (key == 80 && counter < 6) { // down
 			Set[counter] = 7;
 			counter++;
+			if (counter == 6) {
+				counter = 0;
+			}
+			
 		}
 		if (key == '\r') { // enter
 			system("cls");
@@ -138,18 +160,36 @@ void DisplayMenu() {
 				system("pause");
 			}
 			else if (counter == 5) {
+				exit(0);
 			}
-			else if (counter == 6) {
+			/*else if (counter == 6) {
 			}
 			else if (counter == 7) {
 			}
 			else if (counter == 8) {
 			}
 			else if (counter == 9) {
-				exit(0);
-			}
+				
+			}*/
 			//break; // Exit the menu after an option is selected
 		}
 		Set[counter] = 12; // Highlight the selected option in red
 	}
+}
+
+
+void loading(int n)
+{
+	for (int i = 0; i <= n; i++)
+	{
+		cout << "\n\n\n\n\n\n\n\n\n\n\n\n" << setw(65) << "PLEASE WAIT FEW SECOND";
+		for (int j = 0; j < i; j++)
+		{
+			cout << ".";
+		}
+		cout << endl;
+		Sleep(100); // delay for 100 milliseconds
+		system("cls"); // clear the console
+	}
+
 }

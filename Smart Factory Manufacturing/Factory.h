@@ -3,6 +3,7 @@
 #include"Stack.h"
 #include"Proudct.h"
 #include<vector>
+#include<Windows.h>
 #include<algorithm>
 const int s = 4;
 class Factory {
@@ -24,6 +25,39 @@ public:
 		NumOfFinishMilkProducts = 0; NumOfFinishChipsProducts = 0; NumOfAllProducts = 0;
 	}
 	
+	const int DEFAULT_COLOR = 7; // White
+	const int HIGHLIGHT_COLOR = 10; // Green
+	void setConsoleColor(int color) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	}
+	void drawMenu(int option) {
+		system("cls");
+
+		cout << "\n\n\t==> FINISH :\n";
+		for (int i = 1; i <= 2; ++i) {
+			if (i == option) {
+				setConsoleColor(HIGHLIGHT_COLOR);
+				cout << "\t\t-> [" << i << "]  ";
+			}
+			else {
+				setConsoleColor(DEFAULT_COLOR);
+				cout << "\t\t[" << i << "] ";
+			}
+
+			switch (i) {
+			case 1:
+				cout << "Operation By Operation . ";
+				break;
+			case 2:
+				cout << "Finish All Operations. ";
+				break;
+
+			}
+			cout << "\n";
+		}
+		setConsoleColor(DEFAULT_COLOR);
+	}
+
 	void AddQueue() {
 		if (!HeadExist()) {
 			this->Head = new QueueNode(s); // head is current queue
@@ -74,19 +108,41 @@ public:
 		cout << "\n\t\t\t\t\t\t =>|  Operations Manager  |";
 		cout << "\n\t\t\t\t\t\t    ---------------------- \n\n";
 		QueueNode* t = this->Head;
-		cout << "    ==> Finish \n         [1] Operation By Operation . \n         [2] Finish All Operations. \n\n \t\t\t >"; int c; cin >> c;
-		switch (c)
-		{
-		case 1:
-			FinishOneOperatoin();
-			break;
-		case 2:
-			DeleteProduct();
-			break;
+		int option = 1;
+		while (true) {
+			drawMenu(option);
+			char key = _getch();
+			if (key == '\r') { // Enter key pressed
+
+				switch (option) {
+				case 1:
+					FinishOneOperatoin();
+					break;
+				case 2:
+					DeleteProduct();
+					break;
+				}
+				break;
+			}
+			else if (key == 27) { // Escape key pressed
+				cout << "Selection canceled.\n";
+				break;
+			}
+			else if (key == 72 && option > 1) { // Up arrow 
+				option--;
+			}
+			else if (key == 80 && option < 2) { // Down arrow
+				option++;
+			}
 		}
 
-	
+
 	}
+		
+		
+
+	
+	
 	void DeleteProduct() {
 		QueueNode* t = this->Head;
 		if (t != NULL) {
