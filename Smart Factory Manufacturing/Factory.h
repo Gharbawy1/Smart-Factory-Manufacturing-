@@ -267,4 +267,15 @@ public:
 		cout << " \n > We Have " << NumOfFinishMilkProducts << " Finished Milk Product .\n\n";
 		cout << " > We Have " << NumOfFinishChipsProducts << " Finished Chips Product .\n";
 	}
+
+
+
+	void Display_manu() {
+		QueueNode* t = this->Head;
+		while (t)
+		{
+			t->Manufactor();
+			t = t->next;
+		}
+	}
 };

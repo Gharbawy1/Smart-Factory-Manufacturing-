@@ -9,7 +9,8 @@
 #include<iostream>
 #include<string>
 #include <iomanip>  
-#include <sstream>  
+#include <sstream> 
+
 using namespace std;
 enum STATE
 {
@@ -28,6 +29,8 @@ public:
         virtual void DisplayProductData() = 0;
         virtual void UpdateState(int) = 0;
         virtual STATE GetState() = 0;
+
+       virtual void process_product() = 0;
 
         virtual int GetNumberOfOperations() = 0;
 

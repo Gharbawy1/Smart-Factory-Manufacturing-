@@ -131,7 +131,12 @@ Product* QueueNode::GetFront() {
 	return data[front];
 }
 
-
+void QueueNode::Manufactor() {
+	for (int i = 0; i < NoElment; i++) {
+		data[i]->process_product();
+		// stop here ::::: 2:09	
+	}
+}
 
 
 //void  QueueNode::CalcProducts() {

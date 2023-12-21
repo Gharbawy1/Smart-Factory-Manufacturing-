@@ -7,9 +7,11 @@
 class QualityControlOperation : public Operation
 {
     public:
+        
         QualityControlOperation()
         {
             operationName="Quality Control ";
+            this->estimated_time = chrono::milliseconds(1000); // 1000 mili second
         }
         virtual ~QualityControlOperation()
         {
@@ -19,9 +21,12 @@ class QualityControlOperation : public Operation
         {
             operationName="QualityControlOperation";
         }
-               string getName()
+        string getName()
         {
             return operationName;
+        }
+        chrono::milliseconds GetSeconds() {
+            return estimated_time;
         }
     protected:
 

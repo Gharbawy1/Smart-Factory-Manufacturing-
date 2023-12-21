@@ -9,6 +9,7 @@ class DistributionOperation : public Operation
     public:
         DistributionOperation()
         {
+            this->estimated_time = chrono::milliseconds(1000); // 1000 mili second
             operationName="Distribution ";
         }
         virtual ~DistributionOperation()
@@ -19,10 +20,14 @@ class DistributionOperation : public Operation
         {
             operationName="Distribution Operation";
         }
-                string getName()
+        string getName()
         {
             return operationName;
         }
+        chrono::milliseconds GetSeconds() {
+                    return estimated_time;
+        }
+        
     protected:
 
     private:

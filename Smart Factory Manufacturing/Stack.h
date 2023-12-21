@@ -22,9 +22,12 @@ public:
     bool IsEmpty();
     bool IsFull();
     virtual ~Stack();
-
+    Operation* operator[](int index) {
+        return arr[index];
+    }
 protected:
 
 };
+
 
 #endif // STACK_H

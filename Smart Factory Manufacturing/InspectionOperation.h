@@ -7,8 +7,11 @@
 class InspectionOperation : public Operation
 {
     public:
+
         InspectionOperation()
         {
+            this->estimated_time = chrono::milliseconds(1000); // 1000 mili second
+
             operationName="Inspection ";
         }
         virtual ~InspectionOperation()
@@ -23,6 +26,10 @@ class InspectionOperation : public Operation
         {
             return operationName;
         }
+        chrono::milliseconds GetSeconds() {
+               return estimated_time;
+        }
+         
     protected:
 
     private:

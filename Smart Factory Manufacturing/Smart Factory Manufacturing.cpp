@@ -24,9 +24,9 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
 int main() {
-	loading(20);
-	PrintFirstMenu();
-	system("cls");
+	//loading(20);
+	//PrintFirstMenu();
+	//system("cls");
 	DisplayMenu();
 
 
@@ -59,7 +59,7 @@ void PrintFirstMenu() {
 
 }
 void DisplayMenu() {
-	int Set[] = { 7, 7, 7, 7, 7, 7 }; // white color
+	int Set[] = { 7, 7, 7, 7, 7, 7,7 }; // white color
 	int counter = 0;
 	char key;
 
@@ -67,7 +67,7 @@ void DisplayMenu() {
 		system("cls"); // Clear the screen for a fresh display
 
 		DisplayFactoryWord();
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 7; i++) {
 			gotoxy(40, 8 + i); // Move to the appropriate position to display the arrow
 			if (i == counter) {
 				color(12); // Display the arrow in red for the selected option
@@ -104,11 +104,11 @@ void DisplayMenu() {
 				color(Set[i]);
 				cout << i + 1 << ".Exit   " << std::endl;
 			}
-			/*
 			else if (i == 6) {
 				color(Set[i]);
-				cout << i + 1 << ".   " << std::endl;
+				cout << i + 1 << ". Show The Mnufactring Process  " << std::endl;
 			}
+			/*
 			else if (i == 7) {
 				color(Set[i]);
 				cout << i + 1 << ".   " << std::endl;
@@ -129,10 +129,10 @@ void DisplayMenu() {
 			counter--;
 			
 		}
-		if (key == 80 && counter < 6) { // down
+		if (key == 80 && counter < 7) { // down
 			Set[counter] = 7;
 			counter++;
-			if (counter == 6) {
+			if (counter == 7) {
 				counter = 0;
 			}
 			
@@ -162,8 +162,11 @@ void DisplayMenu() {
 			else if (counter == 5) {
 				exit(0);
 			}
-			/*else if (counter == 6) {
+			else if (counter == 6) {
+				factory.Display_manu();
+				system("pause");
 			}
+			/*
 			else if (counter == 7) {
 			}
 			else if (counter == 8) {
