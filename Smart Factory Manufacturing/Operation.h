@@ -1,6 +1,8 @@
 #ifndef OPERATION_H
 #define OPERATION_H
 #include<iostream>
+#include<thread>
+#include<chrono>
 using namespace std;
 class Operation
 {
@@ -8,6 +10,8 @@ private:
     //timer
 public:
     string operationName;
+    chrono::milliseconds estimated_time;
+
     //bool Finish;
 
     Operation() {
@@ -32,6 +36,9 @@ public:
     }*/
     virtual ~Operation() {
 
+    }
+    chrono::milliseconds GetSeconds() {
+        return estimated_time;
     }
 
 protected:

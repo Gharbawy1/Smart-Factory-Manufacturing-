@@ -32,6 +32,7 @@ public:
 	bool IsEmpty();
 	void DisplayProducts();
 
+	void Manufactor();
 	/*void CalcProducts();
 	int GetNumOfMilkProducts();
 	int GetNumOfChipsProducts();*/

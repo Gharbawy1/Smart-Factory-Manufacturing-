@@ -98,7 +98,6 @@ void QueueNode::RemoveAProduct() {
 	//delete data[front]; // this is pointer no refrence 
 	//front = (front + 1) % size;
 	front++;
-	
 	NoElment--;
 	return;
 }
@@ -131,7 +130,20 @@ Product* QueueNode::GetFront() {
 	return data[front];
 }
 
-
+void QueueNode::Manufactor() {
+	static int finishmilk = 0;
+	static int finishchips = 0;
+	for (int i = 0; i < NoElment; i++) {
+		if (Milk* milk = dynamic_cast<Milk*>(data[i])) {
+			data[i]->process_product();
+			cout << "MILK PRODUCT FINISHED \n";
+		}
+		else if (Chips* chips = dynamic_cast<Chips*>(data[i])) {
+			data[i]->process_product();
+			cout << "CHIPS PRODUCT FINISHED \n";
+		}
+	}
+}
 
 
 //void  QueueNode::CalcProducts() {

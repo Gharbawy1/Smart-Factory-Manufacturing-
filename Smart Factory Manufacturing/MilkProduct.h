@@ -3,6 +3,8 @@
 #include"Operation.h"
 #include<conio.h>
 #include<Windows.h>
+using namespace chrono;
+
 class Milk : public Product {
 public:
     const int DEFAULT_COLOR = 7; // White
@@ -47,8 +49,6 @@ public:
         }
         setConsoleColor(DEFAULT_COLOR); // Reset color to default after drawing menu
     }
-    
-    
     Milk() : brand("Unknown"), fat_percentage(3.5), expiration_date("2024-01-01"), state(IN_PROGRESS),NoOfOperations(0) {}
     Milk(const std::string& brand, double fat_percentage, const std::string& expiration_date) {
         this->brand = brand;
@@ -88,7 +88,6 @@ public:
     STATE GetState() {
         return this->state;
     }
-
     void AddOpertaion() {
         int option = 1;
         
@@ -148,12 +147,9 @@ public:
             }
         }
     }
-
     int GetNumberOfOperations() {
         return NoOfOperations;
     }
-
-    
     void DeleteOperation() {
         if (operationsContainer.IsEmpty()) {
             cout << "No Operation to delete :)\n";
@@ -169,6 +165,23 @@ public:
 
        // }
 
+    }
+  
+    
+    void process_product() {
+        using namespace std;
+        using namespace chrono;
+
+        milliseconds estimated_time(0);
+
+        for (int i = 0; i < NoOfOperations; i++) {
+            auto seconds_duration = operationsContainer[i]->GetSeconds();
+            // Convert seconds to milliseconds using duration_cast
+            estimated_time += duration_cast<milliseconds>(seconds_duration);
+        }
+        // Convert estimated_time to DWORD
+        DWORD durationMs = static_cast<DWORD>(estimated_time.count());
+        Sleep(durationMs);
     }
     Stack operationsContainer;
 

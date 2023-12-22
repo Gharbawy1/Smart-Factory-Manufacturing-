@@ -7,9 +7,12 @@
 class ProcessingOperation : public Operation
 {
     public:
+
         ProcessingOperation()
         {
             operationName="Processing ";
+            this->estimated_time = chrono::milliseconds(1000); // 1000 mili second
+
         }
         virtual ~ProcessingOperation()
         {
@@ -22,6 +25,9 @@ class ProcessingOperation : public Operation
         string getName()
         {
             return operationName;
+        }
+        chrono::milliseconds GetSeconds() {
+            return estimated_time;
         }
     protected:
 

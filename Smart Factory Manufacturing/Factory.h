@@ -178,8 +178,8 @@ public:
 		if (t != NULL) {
 			cout << "This Product still have " << t->GetFront()->GetNumberOfOperations() << " Operaions In Progress ";
 			cout << "\n > Sure For Finish All these operations ?";
-			char c; cin >> c;
-			if (c == 'y') {
+			char key = _getch();
+			if (key=='\r') {
 				int cnt = t->GetFront()->GetNumberOfOperations();
 				while (cnt--)
 				{
@@ -266,5 +266,18 @@ public:
 		
 		cout << " \n > We Have " << NumOfFinishMilkProducts << " Finished Milk Product .\n\n";
 		cout << " > We Have " << NumOfFinishChipsProducts << " Finished Chips Product .\n";
+	}
+
+
+
+	void Display_manu() {
+		QueueNode* t = this->Head;
+		while (t)
+		{
+			t->Manufactor();
+			cout << "\t\t \n\n";
+			DisplayNumOfFinishedProducts();
+			t = t->next;
+		}
 	}
 };

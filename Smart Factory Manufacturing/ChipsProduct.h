@@ -1,6 +1,8 @@
 #pragma once
 #include"Proudct.h"
 #include"Operation.h"
+using namespace chrono;
+
 class Chips : public Product {
 private:
     string brand;
@@ -183,7 +185,23 @@ public:
         return NoOfOperations;
     }
 
+    void process_product() {
+        using namespace std;
+        using namespace chrono;
 
+        milliseconds estimated_time(0);
 
+        for (int i = 0; i < NoOfOperations; i++) {
+            auto seconds_duration = operationsContainer[i]->GetSeconds();
+
+            // Convert seconds to milliseconds using duration_cast
+            estimated_time += duration_cast<milliseconds>(seconds_duration);
+        }
+
+        // Convert estimated_time to DWORD
+        DWORD durationMs = static_cast<DWORD>(estimated_time.count());
+
+        Sleep(durationMs);
+    }
 
 };
