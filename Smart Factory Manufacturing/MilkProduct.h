@@ -176,16 +176,12 @@ public:
 
         for (int i = 0; i < NoOfOperations; i++) {
             auto seconds_duration = operationsContainer[i]->GetSeconds();
-
             // Convert seconds to milliseconds using duration_cast
-                estimated_time += duration_cast<milliseconds>(seconds_duration);
+            estimated_time += duration_cast<milliseconds>(seconds_duration);
         }
-
         // Convert estimated_time to DWORD
         DWORD durationMs = static_cast<DWORD>(estimated_time.count());
-
         Sleep(durationMs);
-        
     }
     Stack operationsContainer;
 
