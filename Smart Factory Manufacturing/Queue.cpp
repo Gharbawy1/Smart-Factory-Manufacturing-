@@ -1,7 +1,7 @@
 #include"Queue.h"
 #include<Windows.h>
-//int QueueNode::NumOfMilkProducts = 0;
-//int  QueueNode::NumOfChipsProducts = 0;
+int QueueNode::FinishedMilk = 0;
+int  QueueNode::FinishedChips = 0;
 const int DEFAULT_COLOR = 7; // White
 const int HIGHLIGHT_COLOR = 10; // Green
 void setConsoleColor(int color) {
@@ -136,13 +136,20 @@ void QueueNode::Manufactor() {
 			FinishedMilk++;
 			cout << "-> Milk Product In Process \n";
 			data[i]->process_product();
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+
 			cout << "MILK PRODUCT FINISHED \n\n";
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+
 		}
 		else if (Chips* chips = dynamic_cast<Chips*>(data[i])) {
 			FinishedChips++;
 			cout << "-> Chips Product In Process \n";
 			data[i]->process_product();
-			cout << "CHIPS PRODUCT FINISHED \n";
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+			cout << "CHIPS PRODUCT FINISHED \n\n";
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+
 		}
 	}
 	cout << "\n\n\t\t-->  WE HAVE PRODUCED " << FinishedMilk << " MILK PRODUCT \n";

@@ -206,13 +206,29 @@ public:
 	}
 	
 	// unit to help me in manufacting process showing 
-	void DeleteAllProducts() {
+	void FinishAllProducts() {
+		// delete all old finished prodoucts to fill the array with all products again (INTEND TO OPTMIZE 23/12 G.H)
+		for (int i = 0; i < FinishedCounter; ++i) {
+			
+				delete FinishedProducts[i];
+		}
+	
+		FinishedCounter = 0;
+		//int cnt = 0;// for re init the array -> i comment it cause finished product counter is here 
 		while (Head != nullptr)
 		{
 			QueueNode* temp = Head;
+
+			while(!temp->IsEmpty()) {
+				FinishedProducts[FinishedCounter] = temp->GetFront();
+				temp->RemoveAProduct();
+				FinishedCounter++;
+			}
 			Head = Head->next;
 			delete temp;
 		}
+		//FinishedCounter = 0;
+		
 	}
 
 
@@ -242,8 +258,8 @@ public:
 
 		cout << " ======== Finished Milk Products ======== \n\n";
 		for (int i = 0; i < FinishedCounter; i++) {
-			 if (Milk* milk = dynamic_cast<Milk*>(FinishedProducts[i])) {
-				 FinishedProducts[i]->DisplayProductData(); FInishedmilkfound = 1;
+			if (Milk* milk = dynamic_cast<Milk*>(FinishedProducts[i])) {
+				FinishedProducts[i]->DisplayProductData(); FInishedmilkfound = 1;
 			}
 		}
 		if (FInishedmilkfound == 0) {
@@ -282,14 +298,17 @@ public:
 
 	void Display_manu() {
 		QueueNode* t = this->Head;
+		// clear the finished vector and push all products in it again
 		while (t)
 		{
+			
 			t->Manufactor();
 			cout << "\t\t \n\n";
 			//DisplayNumOfFinishedProducts();
 			t = t->next;
-
 		}
-		DeleteAllProducts();
+		FinishAllProducts();
+		
 	}
+	
 };
