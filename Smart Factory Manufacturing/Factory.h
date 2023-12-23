@@ -113,16 +113,24 @@ public:
 			drawMenu(option);
 			char key = _getch();
 			if (key == '\r') { // Enter key pressed
-
-				switch (option) {
-				case 1:
-					FinishOneOperatoin();
-					break;
-				case 2:
-					DeleteProduct();
+				if (t != NULL) {
+					switch (option) {
+					case 1:
+						FinishOneOperatoin();
+						break;
+					case 2:
+						DeleteProduct();
+						break;
+					}
 					break;
 				}
-				break;
+				else {
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+					cout << "\n\n\t\t\t\t NO PRODUCT SELECTED EMPTY LIST :( \n\n";
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+					Sleep(1000);
+					break;
+				}
 			}
 			else if (key == 27) { // Escape key pressed
 				cout << "Selection canceled.\n";
@@ -299,15 +307,24 @@ public:
 	void Display_manu() {
 		QueueNode* t = this->Head;
 		// clear the finished vector and push all products in it again
-		while (t)
-		{
-			
-			t->Manufactor();
-			cout << "\t\t \n\n";
-			//DisplayNumOfFinishedProducts();
-			t = t->next;
+		if (t != NULL) {
+			while (t)
+			{
+
+				t->Manufactor();
+				cout << "\t\t \n\n";
+				//DisplayNumOfFinishedProducts();
+				t = t->next;
+			}
+			FinishAllProducts();
 		}
-		FinishAllProducts();
+		else {
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+			cout << "\n\n\t\t\t\t NO PRODUCT SELECTED EMPTY LIST :( \n\n";
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+			Sleep(1000);
+		}
+		
 		
 	}
 	

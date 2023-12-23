@@ -189,9 +189,8 @@ public:
         for (size_t i = 0; i < NoOfOperations; ++i) {
             Operation* currentOperation = operationsContainer   [i];
             cout << "    " << currentOperation->operationName << " Operation in processing ";
-            int cnt = currentOperation->estimated_time.count() / 250;
             for (int seconds = currentOperation->estimated_time.count()/250; seconds > 0; --seconds) {
-                cout << cnt-- << " ";
+                cout << ".";
                 this_thread::sleep_for(1s);
             }
             cout << " \t\t > " << currentOperation->operationName << " finished." << endl;
