@@ -10,7 +10,7 @@ class PackagingOperation : public Operation
 
         PackagingOperation()
         {
-            this->estimated_time = chrono::milliseconds(1000); // 1000 mili second
+            this->estimated_time = chrono::milliseconds(2000); // 1000 mili second
 
             operationName="Packaging ";
 

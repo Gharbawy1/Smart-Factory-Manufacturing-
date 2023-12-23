@@ -24,9 +24,9 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
 int main() {
-	//loading(20);
+	loading(20);
 	//PrintFirstMenu();
-	//system("cls");
+	system("cls");
 	DisplayMenu();
 
 
@@ -185,7 +185,7 @@ void loading(int n)
 {
 	for (int i = 0; i <= n; i++)
 	{
-		cout << "\n\n\n\n\n\n\n\n\n\n\n\n" << setw(65) << "PLEASE WAIT FEW SECOND";
+		cout << "\n\n\n\n\n\n\n\n\n\n\n\n" << setw(65) << "PLEASE WAIT FEW SECOND ";
 		for (int j = 0; j < i; j++)
 		{
 			cout << ".";
