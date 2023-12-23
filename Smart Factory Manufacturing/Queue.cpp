@@ -131,18 +131,22 @@ Product* QueueNode::GetFront() {
 }
 
 void QueueNode::Manufactor() {
-	static int finishmilk = 0;
-	static int finishchips = 0;
 	for (int i = 0; i < NoElment; i++) {
 		if (Milk* milk = dynamic_cast<Milk*>(data[i])) {
+			FinishedMilk++;
+			cout << "-> Milk Product In Process \n";
 			data[i]->process_product();
-			cout << "MILK PRODUCT FINISHED \n";
+			cout << "MILK PRODUCT FINISHED \n\n";
 		}
 		else if (Chips* chips = dynamic_cast<Chips*>(data[i])) {
+			FinishedChips++;
+			cout << "-> Chips Product In Process \n";
 			data[i]->process_product();
 			cout << "CHIPS PRODUCT FINISHED \n";
 		}
 	}
+	cout << "\n\n\t\t-->  WE HAVE PRODUCED " << FinishedMilk << " MILK PRODUCT \n";
+	cout << "\n\n\t\t-->  WE HAVE PRODUCED " << FinishedChips << " CHIPS PRODUCT \n";
 }
 
 

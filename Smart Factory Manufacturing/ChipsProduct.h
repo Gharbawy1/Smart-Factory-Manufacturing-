@@ -185,7 +185,7 @@ public:
         return NoOfOperations;
     }
 
-    void process_product() {
+    void process_product1() {
         using namespace std;
         using namespace chrono;
 
@@ -202,6 +202,20 @@ public:
         DWORD durationMs = static_cast<DWORD>(estimated_time.count());
 
         Sleep(durationMs);
+    }
+    void process_product() {
+        using namespace std;
+        using namespace chrono;
+
+        for (size_t i = 0; i < NoOfOperations; ++i) {
+            Operation* currentOperation = operationsContainer[i];
+            cout << "    " << currentOperation->operationName << " Operation in processing ";
+            for (int seconds = currentOperation->estimated_time.count() / 250; seconds > 0; --seconds) {
+                cout << ".";
+                this_thread::sleep_for(1s);
+            }
+            cout << " \t\t > " << currentOperation->operationName << " finished." << endl;
+        }
     }
 
 };

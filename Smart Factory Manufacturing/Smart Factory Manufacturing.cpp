@@ -8,7 +8,7 @@
 
 using namespace std;
 void PrintFirstMenu();
-void DisplayMenu();
+void DisplayMenu();	
 void DisplayFactoryWord();
 void loading(int n);
 Factory factory;

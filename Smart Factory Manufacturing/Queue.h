@@ -15,7 +15,8 @@ private:
 	int NoElment;
 	int front;
 	int rear;
-	
+	int FinishedMilk;
+	int FinishedChips;
 
 public:
      //static int NumOfMilkProducts;
