@@ -140,9 +140,6 @@ public:
 	}
 		
 		
-
-	
-	
 	void DeleteProduct() {
 		QueueNode* t = this->Head;
 		if (t != NULL) {
@@ -177,8 +174,9 @@ public:
 		QueueNode* t = this->Head;
 		if (t != NULL) {
 			cout << "This Product still have " << t->GetFront()->GetNumberOfOperations() << " Operaions In Progress ";
-			cout << "\n > Sure For Finish All these operations ?";
+			cout << "\n > Sure For Finish All these operations ? Press Enter Please";
 			char key = _getch();
+			cout << endl;
 			if (key=='\r') {
 				int cnt = t->GetFront()->GetNumberOfOperations();
 				while (cnt--)
@@ -207,21 +205,33 @@ public:
 		}
 	}
 	
-
+	// unit to help me in manufacting process showing 
+	void DeleteAllProducts() {
+		while (Head != nullptr)
+		{
+			QueueNode* temp = Head;
+			Head = Head->next;
+			delete temp;
+		}
+	}
 
 
 	bool HeadExist() {
 		return Head != NULL;
-
 	}
 	void DisplayProducts() {
-		cout << " >> We Have " << abs(NumOfAllProducts - FinishedCounter) << " Product In This Factory In Procissing \n\n";
+		if (FinishedCounter != 0) {
+			cout << " >> We Have " << abs(NumOfAllProducts - FinishedCounter) << " Product In This Factory In Procissing \n\n";
+		}
+		else {
+			cout << " >> We Have " << abs(NumOfAllProducts) << " Product In This Factory In Procissing \n\n";
+		}
 		QueueNode* t = this->Head;
 		while (t)
 		{
 			t->DisplayProducts();
 			if (t->next) {
-				cout << "****************************\n";
+				cout << "====================================\n";
 			}
 			t = t->next;
 		}
@@ -276,8 +286,10 @@ public:
 		{
 			t->Manufactor();
 			cout << "\t\t \n\n";
-			DisplayNumOfFinishedProducts();
+			//DisplayNumOfFinishedProducts();
 			t = t->next;
+
 		}
+		DeleteAllProducts();
 	}
 };
